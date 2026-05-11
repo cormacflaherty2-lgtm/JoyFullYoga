@@ -308,7 +308,14 @@
     /* ─── HERO ────────────────────────────────────────────── */
     #home {
       min-height: 100vh;
-      background: linear-gradient(155deg, #3D6B47 0%, #2C5235 52%, #1C2B1E 100%);
+      background-image:
+        linear-gradient(160deg,
+          rgba(44,82,53,0.82) 0%,
+          rgba(28,43,30,0.88) 100%),
+        url('SunsetYoga.jpeg');
+      background-size: cover;
+      background-position: center 30%;
+      background-attachment: scroll;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -317,16 +324,6 @@
       padding: calc(var(--nav-h) + var(--sp-10)) var(--sp-6) var(--sp-20);
       position: relative;
       overflow: hidden;
-    }
-
-    #home::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 55% at 25% 35%, rgba(201,169,110,0.07) 0%, transparent 65%),
-        radial-gradient(ellipse 55% 45% at 78% 68%, rgba(61,107,71,0.22) 0%, transparent 55%);
-      pointer-events: none;
     }
 
     .hero-inner {
@@ -427,10 +424,10 @@
     .class-card {
       background: var(--white);
       border-radius: var(--radius);
-      padding: var(--sp-8);
+      padding: 0;
+      overflow: hidden;
       display: flex;
       flex-direction: column;
-      gap: var(--sp-4);
       box-shadow: 0 2px 12px rgba(28,43,30,0.05);
       transition: box-shadow 0.25s ease, transform 0.25s ease;
     }
@@ -441,6 +438,14 @@
     }
 
     .class-card.card-special { background: var(--terra-light); }
+
+    .card-body {
+      padding: var(--sp-6) var(--sp-8) var(--sp-8);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+      flex: 1;
+    }
 
     .class-tag {
       display: inline-block;
@@ -536,15 +541,11 @@
 
     .event-detail-row svg { color: var(--gold); flex-shrink: 0; margin-top: 2px; }
 
-    /* Decorative flyer card */
+    /* Event photo card */
     .event-flyer {
-      background: var(--white);
       border-radius: 16px;
-      padding: var(--sp-10) var(--sp-8);
-      text-align: center;
-      position: relative;
       overflow: hidden;
-      color: var(--text);
+      position: relative;
     }
 
     .event-flyer::before {
@@ -553,69 +554,7 @@
       top: 0; left: 0; right: 0;
       height: 5px;
       background: linear-gradient(90deg, var(--sage) 0%, var(--terracotta) 50%, var(--gold) 100%);
-    }
-
-    .flyer-bow   { margin: 0 auto var(--sp-4); display: block; }
-
-    .flyer-badge {
-      display: inline-block;
-      background: var(--terra-light);
-      color: var(--terracotta);
-      font-size: var(--fs-xs);
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      padding: var(--sp-2) var(--sp-5);
-      border-radius: 100px;
-      margin-bottom: var(--sp-5);
-    }
-
-    .flyer-title {
-      font-family: var(--font-display);
-      font-size: var(--fs-4xl);
-      font-weight: 700;
-      font-style: italic;
-      color: var(--sage-dark);
-      line-height: 1.2;
-      margin-bottom: var(--sp-2);
-    }
-
-    .flyer-sub {
-      font-size: var(--fs-base);
-      color: var(--muted);
-      margin-bottom: var(--sp-5);
-      font-style: italic;
-    }
-
-    .flyer-divider {
-      height: 1px;
-      background: var(--divider);
-      margin: var(--sp-4) 0;
-    }
-
-    .flyer-details {
-      display: flex;
-      flex-direction: column;
-      gap: var(--sp-2);
-      margin-bottom: var(--sp-6);
-    }
-
-    .flyer-detail-row {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: var(--sp-2);
-      font-size: var(--fs-sm);
-      color: var(--muted);
-    }
-
-    .flyer-detail-row svg { color: var(--terracotta); flex-shrink: 0; }
-
-    .flyer-credit {
-      font-size: var(--fs-xs);
-      color: var(--muted);
-      font-style: italic;
-      letter-spacing: 0.06em;
+      z-index: 1;
     }
 
     /* ─── ABOUT ───────────────────────────────────────────── */
@@ -669,34 +608,16 @@
     .photo-mosaic {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      grid-template-rows: 200px 200px;
       gap: var(--sp-4);
     }
 
-    .photo-block { border-radius: var(--radius); overflow: hidden; }
-
-    .photo-block:first-child         { grid-column: 1 / -1; height: 220px; }
-    .photo-block:not(:first-child)   { height: 160px; }
-
-    .photo-block-inner {
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .photo-block {
+      border-radius: var(--radius);
+      overflow: hidden;
     }
 
-    .pb-sage  { background: linear-gradient(145deg, #3D6B47 0%, #2C5235 55%, #1C2B1E 100%); }
-    .pb-terra { background: linear-gradient(145deg, #E07B6A 0%, #c56455 100%); }
-    .pb-gold  { background: linear-gradient(145deg, #C9A96E 0%, #a88147 100%); }
-
-    .photo-label {
-      font-family: var(--font-display);
-      font-style: italic;
-      font-size: var(--fs-xl);
-      color: rgba(255,255,255,0.58);
-      text-align: center;
-      padding: var(--sp-4);
-    }
+    .photo-block:first-child { grid-row: span 2; }
 
     /* ─── CONTACT ─────────────────────────────────────────── */
     #contact { background: var(--sage-light); }
@@ -972,10 +893,22 @@
 
           <!-- Logo -->
           <a href="#home" aria-label="JoyFull Yoga — home">
-            <svg viewBox="0 0 220 52" height="40" xmlns="http://www.w3.org/2000/svg" aria-label="JOYFULL YOGA" role="img">
-              <text x="0" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="32" fill="#3D6B47">JOY</text>
-              <text x="68" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="32" fill="#E07B6A">FULL</text>
-              <text x="2" y="50" font-family="'Inter', sans-serif" font-weight="500" font-size="11" letter-spacing="5" fill="#5E7462">YOGA</text>
+            <svg viewBox="0 0 220 52" height="40"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-label="JOYFULL YOGA" role="img">
+              <text x="0" y="34"
+                font-family="'Cormorant Garamond', Georgia, serif"
+                font-weight="700" font-size="32"
+                fill="#3D6B47">JOY</text>
+              <text x="68" y="34"
+                font-family="'Cormorant Garamond', Georgia, serif"
+                font-weight="700" font-size="32"
+                fill="#E07B6A">FULL</text>
+              <text x="2" y="50"
+                font-family="'Inter', sans-serif"
+                font-weight="500" font-size="11"
+                letter-spacing="5"
+                fill="#5E7462">YOGA</text>
             </svg>
           </a>
 
@@ -1008,7 +941,7 @@
 
   <main>
 
-    <!-- ═══ [2] HERO ═══ -->
+    <!-- ═══ HERO ═══ -->
     <section id="home" aria-labelledby="hero-heading">
       <div class="hero-inner">
         <p class="hero-eyebrow">Outdoor Yoga · Cypress, TX</p>
@@ -1024,7 +957,7 @@
       </a>
     </section>
 
-    <!-- ═══ [3] TRUST BAR ═══ -->
+    <!-- ═══ TRUST BAR ═══ -->
     <div id="trust-bar" role="region" aria-label="Class highlights">
       <div class="container">
         <div class="trust-grid">
@@ -1048,7 +981,7 @@
       </div>
     </div>
 
-    <!-- ═══ [4] CLASSES ═══ -->
+    <!-- ═══ CLASSES ═══ -->
     <section id="classes" class="section-pad" aria-labelledby="classes-heading">
       <div class="container">
         <div class="section-header">
@@ -1059,70 +992,100 @@
 
         <div class="classes-grid">
 
-          <!-- Slow Flow -->
+          <!-- Card 1: Slow Flow -->
           <article class="class-card">
-            <span class="class-tag">Slow Flow</span>
-            <h3 class="class-title">9:30a Slow Flow Yoga &amp; Mindfulness</h3>
-            <div class="class-meta">
-              <div class="class-meta-row">
-                <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
-                <span>Tuesday &amp; Thursday</span>
+            <img
+              src="Stretch.jpeg"
+              alt="Group yoga stretch class on the outdoor deck in Cypress TX"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="180"
+              style="width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-radius:16px 16px 0 0;">
+            <div class="card-body">
+              <span class="class-tag">Slow Flow</span>
+              <h3 class="class-title">9:30a Slow Flow Yoga &amp; Mindfulness</h3>
+              <div class="class-meta">
+                <div class="class-meta-row">
+                  <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
+                  <span>Tuesday &amp; Thursday</span>
+                </div>
+                <div class="class-meta-row">
+                  <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
+                  <span>45 min</span>
+                </div>
               </div>
-              <div class="class-meta-row">
-                <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
-                <span>45 min</span>
+              <div class="class-price">$10</div>
+              <div class="card-footer">
+                <a href="#contact" class="btn btn-gold btn-full">Book Now →</a>
               </div>
-            </div>
-            <div class="class-price">$10</div>
-            <div class="card-footer">
-              <a href="#contact" class="btn btn-gold btn-full">Book Now →</a>
             </div>
           </article>
 
-          <!-- Special Event -->
+          <!-- Card 2: Special Event -->
           <article class="class-card card-special">
-            <span class="class-tag tag-special">Special Event</span>
-            <h3 class="class-title">5/9 Yoga Under the Oaks @ Restivo Family Cellars</h3>
-            <div class="class-meta">
-              <div class="class-meta-row">
-                <i data-lucide="map-pin" width="15" height="15" aria-hidden="true"></i>
-                <span>18918 Hopfe Road, Hockley, TX</span>
+            <img
+              src="MotherDay.jpeg"
+              alt="Mother's Day Weekend Yoga event at Restivo Family Cellars in Hockley TX"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="180"
+              style="width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-radius:16px 16px 0 0;">
+            <div class="card-body">
+              <span class="class-tag tag-special">Special Event</span>
+              <h3 class="class-title">5/9 Yoga Under the Oaks @ Restivo Family Cellars</h3>
+              <div class="class-meta">
+                <div class="class-meta-row">
+                  <i data-lucide="map-pin" width="15" height="15" aria-hidden="true"></i>
+                  <span>18918 Hopfe Road, Hockley, TX</span>
+                </div>
+                <div class="class-meta-row">
+                  <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
+                  <span>Saturday, May 9th</span>
+                </div>
+                <div class="class-meta-row">
+                  <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
+                  <span>11:30 AM</span>
+                </div>
+                <div class="class-meta-row">
+                  <i data-lucide="sparkles" width="15" height="15" aria-hidden="true"></i>
+                  <span>Mother's Day Weekend Yoga</span>
+                </div>
               </div>
-              <div class="class-meta-row">
-                <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
-                <span>Saturday, May 9th</span>
+              <div class="card-footer">
+                <a href="#events" class="btn btn-terracotta btn-full">Reserve Your Spot →</a>
               </div>
-              <div class="class-meta-row">
-                <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
-                <span>11:30 AM</span>
-              </div>
-              <div class="class-meta-row">
-                <i data-lucide="sparkles" width="15" height="15" aria-hidden="true"></i>
-                <span>Mother's Day Weekend Yoga</span>
-              </div>
-            </div>
-            <div class="card-footer">
-              <a href="#events" class="btn btn-terracotta btn-full">Reserve Your Spot →</a>
             </div>
           </article>
 
-          <!-- Vinyasa -->
+          <!-- Card 3: Vinyasa -->
           <article class="class-card">
-            <span class="class-tag">Vinyasa</span>
-            <h3 class="class-title">12p Vinyasa Flow</h3>
-            <div class="class-meta">
-              <div class="class-meta-row">
-                <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
-                <span>Friday</span>
+            <img
+              src="Solo.jpeg"
+              alt="Solo yoga practice at sunset in Cypress TX"
+              loading="lazy"
+              decoding="async"
+              width="400"
+              height="180"
+              style="width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-radius:16px 16px 0 0;">
+            <div class="card-body">
+              <span class="class-tag">Vinyasa</span>
+              <h3 class="class-title">12p Vinyasa Flow</h3>
+              <div class="class-meta">
+                <div class="class-meta-row">
+                  <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
+                  <span>Friday</span>
+                </div>
+                <div class="class-meta-row">
+                  <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
+                  <span>45 min</span>
+                </div>
               </div>
-              <div class="class-meta-row">
-                <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
-                <span>45 min</span>
+              <div class="class-price">$10</div>
+              <div class="card-footer">
+                <a href="#contact" class="btn btn-gold btn-full">Book Now →</a>
               </div>
-            </div>
-            <div class="class-price">$10</div>
-            <div class="card-footer">
-              <a href="#contact" class="btn btn-gold btn-full">Book Now →</a>
             </div>
           </article>
 
@@ -1130,7 +1093,7 @@
       </div>
     </section>
 
-    <!-- ═══ [5] EVENTS FEATURE ═══ -->
+    <!-- ═══ EVENTS FEATURE ═══ -->
     <section id="events" class="section-pad" aria-labelledby="events-heading">
       <div class="container">
         <div class="events-grid">
@@ -1163,41 +1126,17 @@
             <a href="tel:2817443202" class="btn btn-gold">Reserve Your Spot →</a>
           </div>
 
-          <!-- Right: decorative flyer card -->
+          <!-- Right: event photo card -->
           <div>
             <div class="event-flyer">
-
-              <!-- Bow decoration -->
-              <svg class="flyer-bow" viewBox="0 0 90 44" width="90" height="44"
-                   xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
-                <path d="M45 22 C33 11, 9 9, 7 22 C9 35, 33 33, 45 22Z"   fill="#E07B6A" opacity="0.82"/>
-                <path d="M45 22 C57 11, 81 9, 83 22 C81 35, 57 33, 45 22Z" fill="#E07B6A" opacity="0.82"/>
-                <circle cx="45" cy="22" r="6" fill="#C9A96E"/>
-                <line x1="42" y1="24" x2="35" y2="42" stroke="#E07B6A" stroke-width="2.5" stroke-linecap="round"/>
-                <line x1="48" y1="24" x2="55" y2="42" stroke="#E07B6A" stroke-width="2.5" stroke-linecap="round"/>
-              </svg>
-
-              <div class="flyer-badge">Mother's Day Weekend</div>
-              <p class="flyer-title">Yoga Under<br>the Oaks</p>
-              <p class="flyer-sub">A morning of movement, breath &amp; connection</p>
-              <div class="flyer-divider"></div>
-
-              <div class="flyer-details">
-                <div class="flyer-detail-row">
-                  <i data-lucide="map-pin"  width="15" height="15" aria-hidden="true"></i>
-                  <span>Restivo Family Cellars, Hockley, TX</span>
-                </div>
-                <div class="flyer-detail-row">
-                  <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
-                  <span>Saturday, May 9th &middot; 11:30 AM</span>
-                </div>
-                <div class="flyer-detail-row">
-                  <i data-lucide="sparkles" width="15" height="15" aria-hidden="true"></i>
-                  <span>All Levels Welcome &middot; Bring Your Mat</span>
-                </div>
-              </div>
-
-              <p class="flyer-credit">JoyFull Yoga &middot; Cypress, TX</p>
+              <img
+                src="MotherDay.jpeg"
+                alt="Mother's Day Weekend Yoga event flyer — Yoga Under the Oaks at Restivo Family Cellars"
+                loading="lazy"
+                decoding="async"
+                width="560"
+                height="320"
+                style="width:100%;height:320px;object-fit:cover;object-position:center;border-radius:16px;display:block;">
             </div>
           </div>
 
@@ -1205,7 +1144,7 @@
       </div>
     </section>
 
-    <!-- ═══ [6] ABOUT ═══ -->
+    <!-- ═══ ABOUT ═══ -->
     <section id="about" class="section-pad" aria-labelledby="about-heading">
       <div class="container">
         <div class="about-grid">
@@ -1233,30 +1172,52 @@
             </div>
           </div>
 
-          <!-- Right: photo placeholders -->
-          <div class="photo-mosaic" aria-hidden="true">
-            <div class="photo-block pb-sage">
-              <div class="photo-block-inner">
-                <p class="photo-label">Yoga on the Deck</p>
-              </div>
+          <!-- Right: photo mosaic -->
+          <div class="photo-mosaic">
+
+            <!-- Large card: top-left, spans 2 rows -->
+            <div class="photo-block">
+              <img
+                src="Group-Class.png"
+                alt="Outdoor yoga group class in Cypress TX"
+                loading="lazy"
+                decoding="async"
+                width="560"
+                height="416"
+                style="object-fit:cover;height:100%;width:100%;border-radius:16px;">
             </div>
-            <div class="photo-block pb-terra">
-              <div class="photo-block-inner">
-                <p class="photo-label">Community Flow</p>
-              </div>
+
+            <!-- Top-right card -->
+            <div class="photo-block">
+              <img
+                src="Stretch.jpeg"
+                alt="Yoga stretch class on the outdoor deck"
+                loading="lazy"
+                decoding="async"
+                width="560"
+                height="200"
+                style="object-fit:cover;height:100%;width:100%;border-radius:16px;">
             </div>
-            <div class="photo-block pb-gold">
-              <div class="photo-block-inner">
-                <p class="photo-label">Breathe &amp; Connect</p>
-              </div>
+
+            <!-- Bottom-right card -->
+            <div class="photo-block">
+              <img
+                src="Solo.jpeg"
+                alt="Solo yoga practice at sunset"
+                loading="lazy"
+                decoding="async"
+                width="560"
+                height="200"
+                style="object-fit:cover;height:100%;width:100%;border-radius:16px;">
             </div>
+
           </div>
 
         </div>
       </div>
     </section>
 
-    <!-- ═══ [7] CONTACT ═══ -->
+    <!-- ═══ CONTACT ═══ -->
     <section id="contact" class="section-pad" aria-labelledby="contact-heading">
       <div class="container">
         <div class="section-header">
@@ -1358,7 +1319,7 @@
 
   </main>
 
-  <!-- ═══ [8] FOOTER ═══ -->
+  <!-- ═══ FOOTER ═══ -->
   <footer>
     <div class="footer-main">
       <div class="container">
@@ -1367,10 +1328,22 @@
           <!-- Brand -->
           <div class="footer-brand">
             <a href="#home" aria-label="JoyFull Yoga — home">
-              <svg viewBox="0 0 220 52" height="40" xmlns="http://www.w3.org/2000/svg" aria-label="JOYFULL YOGA" role="img">
-                <text x="0" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="32" fill="#4f98a3">JOY</text>
-                <text x="68" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="32" fill="#E07B6A">FULL</text>
-                <text x="2" y="50" font-family="'Inter', sans-serif" font-weight="500" font-size="11" letter-spacing="5" fill="rgba(255,255,255,0.55)">YOGA</text>
+              <svg viewBox="0 0 220 52" height="40"
+                xmlns="http://www.w3.org/2000/svg"
+                aria-label="JOYFULL YOGA" role="img">
+                <text x="0" y="34"
+                  font-family="'Cormorant Garamond', Georgia, serif"
+                  font-weight="700" font-size="32"
+                  fill="#3D6B47">JOY</text>
+                <text x="68" y="34"
+                  font-family="'Cormorant Garamond', Georgia, serif"
+                  font-weight="700" font-size="32"
+                  fill="#E07B6A">FULL</text>
+                <text x="2" y="50"
+                  font-family="'Inter', sans-serif"
+                  font-weight="500" font-size="11"
+                  letter-spacing="5"
+                  fill="rgba(255,255,255,0.55)">YOGA</text>
               </svg>
             </a>
             <p>Outdoor yoga for all levels in Cypress, TX. Embrace nature, breathe deep, and connect with community every week on the deck.</p>
@@ -1433,10 +1406,22 @@
         <p class="footer-copy">&copy; 2025 JoyFull Yoga &middot; Cypress, TX &middot; All rights reserved.</p>
 
         <a href="#home" class="footer-seal" aria-label="JoyFull Yoga — scroll to top">
-          <svg viewBox="0 0 220 52" height="40" xmlns="http://www.w3.org/2000/svg" aria-label="JOYFULL YOGA" role="img">
-            <text x="0" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="32" fill="#3D6B47">JOY</text>
-            <text x="68" y="34" font-family="'Cormorant Garamond', Georgia, serif" font-weight="700" font-size="32" fill="#E07B6A">FULL</text>
-            <text x="2" y="50" font-family="'Inter', sans-serif" font-weight="500" font-size="11" letter-spacing="5" fill="#5E7462">YOGA</text>
+          <svg viewBox="0 0 220 52" height="40"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-label="JOYFULL YOGA" role="img">
+            <text x="0" y="34"
+              font-family="'Cormorant Garamond', Georgia, serif"
+              font-weight="700" font-size="32"
+              fill="#3D6B47">JOY</text>
+            <text x="68" y="34"
+              font-family="'Cormorant Garamond', Georgia, serif"
+              font-weight="700" font-size="32"
+              fill="#E07B6A">FULL</text>
+            <text x="2" y="50"
+              font-family="'Inter', sans-serif"
+              font-weight="500" font-size="11"
+              letter-spacing="5"
+              fill="rgba(255,255,255,0.55)">YOGA</text>
           </svg>
         </a>
 
@@ -1445,7 +1430,7 @@
     </div>
   </footer>
 
-  <!-- ═══ [9] MOBILE FLOATING BAR ═══ -->
+  <!-- ═══ MOBILE FLOATING BAR ═══ -->
   <div class="mobile-bar" role="complementary" aria-label="Quick contact">
     <a href="tel:2817443202" class="btn btn-outline-white">&#128222; Call / Text</a>
     <a href="#contact"       class="btn btn-gold">&#129338; Book a Class</a>
