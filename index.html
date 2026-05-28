@@ -53,7 +53,7 @@
       --fs-5xl:  clamp(2.4rem,   6.5vw,  3.5rem);
       --fs-6xl:  clamp(2.8rem,   8vw,    4.5rem);
 
-      --nav-h:  80px;
+      --nav-h:  150px;
       --radius: 10px;
     }
 
@@ -180,7 +180,7 @@
       transition: background 0.35s, backdrop-filter 0.35s, box-shadow 0.35s;
     }
 
-    #main-nav.nav-top      { background: transparent; }
+    #main-nav.nav-top,
     #main-nav.nav-scrolled {
       background: rgba(250,247,242,0.92);
       backdrop-filter: blur(14px);
@@ -207,7 +207,7 @@
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.88);
+      color: var(--muted);
       transition: color 0.2s;
       padding: var(--sp-2) 0;
       position: relative;
@@ -246,7 +246,7 @@
       display: block;
       width: 22px;
       height: 2px;
-      background: rgba(255,255,255,0.88);
+      background: var(--text);
       border-radius: 2px;
       transition: background 0.3s;
     }
@@ -819,25 +819,7 @@
 
     /* Footer logo seal */
     .footer-seal {
-      width: 128px;
-      height: 128px;
-      border-radius: 50%;
-      background: var(--white);
-      display: flex;
-      align-items: center;
-      justify-content: center;
       flex-shrink: 0;
-      box-shadow:
-        0 0 0 7px rgba(255,255,255,0.07),
-        0 6px 24px rgba(0,0,0,0.22);
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .footer-seal:hover {
-      transform: scale(1.04);
-      box-shadow:
-        0 0 0 7px rgba(255,255,255,0.1),
-        0 10px 30px rgba(0,0,0,0.28);
     }
 
     @media (max-width: 600px) {
@@ -1317,6 +1299,10 @@
           <a href="#home" aria-label="JoyFull Yoga — home">
             <img src="Logo.png" alt="JoyFull Yoga"
                  height="52" style="display:block;">
+            <img src="assets/Logo.png"
+                 alt="JoyFull Yoga"
+                 height="130"
+                 style="display:block; height:130px; width:auto;">
           </a>
 
           <!-- Desktop links -->
@@ -2055,23 +2041,11 @@
           <!-- Brand -->
           <div class="footer-brand">
             <a href="#home" aria-label="JoyFull Yoga — home">
-              <svg viewBox="0 0 220 52" height="40"
-                xmlns="http://www.w3.org/2000/svg"
-                aria-label="JOYFULL YOGA" role="img">
-                <text x="0" y="34"
-                  font-family="'Cormorant Garamond', Georgia, serif"
-                  font-weight="700" font-size="32"
-                  fill="#3D6B47">JOY</text>
-                <text x="68" y="34"
-                  font-family="'Cormorant Garamond', Georgia, serif"
-                  font-weight="700" font-size="32"
-                  fill="#E07B6A">FULL</text>
-                <text x="2" y="50"
-                  font-family="'Inter', sans-serif"
-                  font-weight="500" font-size="11"
-                  letter-spacing="5"
-                  fill="rgba(255,255,255,0.55)">YOGA</text>
-              </svg>
+              <div style="background:#ffffff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;line-height:0;width:72px;height:72px;">
+                <img src="assets/Logo.png"
+                     alt="JoyFull Yoga"
+                     style="display:block; height:68px; width:68px; object-fit:contain;">
+              </div>
             </a>
             <p>Outdoor yoga for all levels in Cypress, TX. Embrace nature, breathe deep, and connect with community every week on the deck.</p>
             <div class="social-row" aria-label="Social media">
@@ -2133,23 +2107,11 @@
         <p class="footer-copy">&copy; 2025 JoyFull Yoga &middot; Cypress, TX &middot; All rights reserved.</p>
 
         <a href="#home" class="footer-seal" aria-label="JoyFull Yoga — scroll to top">
-          <svg viewBox="0 0 220 52" height="40"
-            xmlns="http://www.w3.org/2000/svg"
-            aria-label="JOYFULL YOGA" role="img">
-            <text x="0" y="34"
-              font-family="'Cormorant Garamond', Georgia, serif"
-              font-weight="700" font-size="32"
-              fill="#3D6B47">JOY</text>
-            <text x="68" y="34"
-              font-family="'Cormorant Garamond', Georgia, serif"
-              font-weight="700" font-size="32"
-              fill="#E07B6A">FULL</text>
-            <text x="2" y="50"
-              font-family="'Inter', sans-serif"
-              font-weight="500" font-size="11"
-              letter-spacing="5"
-              fill="rgba(255,255,255,0.55)">YOGA</text>
-          </svg>
+          <div style="background:#ffffff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;line-height:0;width:72px;height:72px;">
+            <img src="assets/Logo.png"
+                 alt="JoyFull Yoga"
+                 style="display:block; height:68px; width:68px; object-fit:contain;">
+          </div>
         </a>
 
         <p class="footer-copy">Embrace Nature, Breathe, Connect.</p>
@@ -2168,18 +2130,8 @@
     /* ── Nav scroll state ── */
     var nav = document.getElementById('main-nav');
 
-    function syncNav() {
-      if (window.scrollY > 48) {
-        nav.classList.remove('nav-top');
-        nav.classList.add('nav-scrolled');
-      } else {
-        nav.classList.remove('nav-scrolled');
-        nav.classList.add('nav-top');
-      }
-    }
-
-    window.addEventListener('scroll', syncNav, { passive: true });
-    syncNav();
+    nav.classList.remove('nav-top');
+    nav.classList.add('nav-scrolled');
 
     /* ── Mobile menu ── */
     var menu    = document.getElementById('mobile-menu');
