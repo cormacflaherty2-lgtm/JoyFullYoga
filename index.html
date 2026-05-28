@@ -180,7 +180,7 @@
       transition: background 0.35s, backdrop-filter 0.35s, box-shadow 0.35s;
     }
 
-    #main-nav.nav-top      { background: transparent; }
+    #main-nav.nav-top,
     #main-nav.nav-scrolled {
       background: rgba(250,247,242,0.92);
       backdrop-filter: blur(14px);
@@ -207,7 +207,7 @@
       font-weight: 500;
       letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: rgba(255,255,255,0.88);
+      color: var(--muted);
       transition: color 0.2s;
       padding: var(--sp-2) 0;
       position: relative;
@@ -246,7 +246,7 @@
       display: block;
       width: 22px;
       height: 2px;
-      background: rgba(255,255,255,0.88);
+      background: var(--text);
       border-radius: 2px;
       transition: background 0.3s;
     }
@@ -1400,18 +1400,8 @@
     /* ── Nav scroll state ── */
     var nav = document.getElementById('main-nav');
 
-    function syncNav() {
-      if (window.scrollY > 48) {
-        nav.classList.remove('nav-top');
-        nav.classList.add('nav-scrolled');
-      } else {
-        nav.classList.remove('nav-scrolled');
-        nav.classList.add('nav-top');
-      }
-    }
-
-    window.addEventListener('scroll', syncNav, { passive: true });
-    syncNav();
+    nav.classList.remove('nav-top');
+    nav.classList.add('nav-scrolled');
 
     /* ── Mobile menu ── */
     var menu    = document.getElementById('mobile-menu');
