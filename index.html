@@ -868,6 +868,428 @@
     /* ─── Focus ring ──────────────────────────────────────── */
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
+    /* ─── BOOKING SECTION ────────────────────────────────── */
+    #booking { background: var(--cream); }
+
+    .booking-filter-row {
+      display: flex;
+      gap: var(--sp-3);
+      flex-wrap: wrap;
+      margin-bottom: var(--sp-10);
+    }
+
+    .booking-filter-btn {
+      font-family: var(--font-body);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: var(--sp-2) var(--sp-5);
+      border-radius: 100px;
+      border: 1.5px solid rgba(61,107,71,0.28);
+      background: transparent;
+      color: var(--muted);
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, border-color 0.2s;
+      min-height: 38px;
+    }
+
+    .booking-filter-btn:hover {
+      border-color: var(--sage);
+      color: var(--sage);
+    }
+
+    .booking-filter-btn.active {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: var(--white);
+    }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
+      gap: var(--sp-6);
+    }
+
+    .bcard {
+      background: var(--white);
+      border: 1px solid rgba(61,107,71,0.1);
+      border-radius: var(--radius);
+      box-shadow: 0 2px 12px rgba(28,43,30,0.05);
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      overflow: hidden;
+    }
+
+    .bcard:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(28,43,30,0.1);
+    }
+
+    .bcard-body {
+      padding: var(--sp-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      flex: 1;
+    }
+
+    .bcard-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--sp-3);
+    }
+
+    .bcard-badge {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: var(--sp-1) var(--sp-3);
+      border-radius: 100px;
+    }
+
+    .bcard-badge.badge-weekly {
+      background: var(--sage-light);
+      color: var(--sage);
+    }
+
+    .bcard-badge.badge-special {
+      background: var(--terra-light);
+      color: var(--terracotta);
+    }
+
+    .bcard-price {
+      font-family: var(--font-display);
+      font-size: var(--fs-3xl);
+      font-weight: 700;
+      color: var(--sage);
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .bcard-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.25;
+    }
+
+    .bcard-subtitle {
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      margin-top: calc(-1 * var(--sp-2));
+    }
+
+    .bcard-meta {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .bcard-meta-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-sm);
+      color: var(--muted);
+    }
+
+    .bcard-meta-row svg { flex-shrink: 0; color: var(--sage); }
+
+    .bcard-divider {
+      height: 1px;
+      background: var(--divider);
+      margin: var(--sp-1) 0;
+    }
+
+    .bcard-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      padding: var(--sp-4) var(--sp-6) var(--sp-5);
+      border-top: 1px solid var(--divider);
+    }
+
+    .bcard-spots {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .bcard-spots-label {
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .bcard-spots-track {
+      width: 80px;
+      height: 4px;
+      border-radius: 2px;
+      background: rgba(61,107,71,0.15);
+      overflow: hidden;
+    }
+
+    .bcard-spots-fill {
+      height: 100%;
+      border-radius: 2px;
+      background: var(--sage);
+      transition: width 0.3s ease;
+    }
+
+    .bcard-spots-fill.low { background: var(--gold); }
+
+    /* Featured card (full-width horizontal) */
+    .bcard-featured {
+      grid-column: 1 / -1;
+      flex-direction: row;
+    }
+
+    .bcard-featured .bcard-body { flex: 1; }
+
+    .bcard-featured-panel {
+      width: 220px;
+      flex-shrink: 0;
+      background: linear-gradient(160deg, var(--sage) 0%, var(--sage-dark) 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-2);
+      padding: var(--sp-8) var(--sp-6);
+      color: var(--white);
+    }
+
+    .bcard-featured-day {
+      font-family: var(--font-display);
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      color: var(--white);
+    }
+
+    .bcard-featured-month {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.65);
+    }
+
+    .bcard-featured-time {
+      font-size: var(--fs-sm);
+      color: rgba(255,255,255,0.72);
+      margin-top: var(--sp-2);
+    }
+
+    @media (max-width: 640px) {
+      .bcard-featured { flex-direction: column; }
+      .bcard-featured-panel {
+        width: 100%;
+        flex-direction: row;
+        justify-content: center;
+        gap: var(--sp-4);
+        padding: var(--sp-4) var(--sp-6);
+      }
+      .bcard-featured-day { font-size: 2.5rem; }
+    }
+
+    /* Wix placeholder strip */
+    .booking-info-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(min(220px, 100%), 1fr));
+      gap: var(--sp-6);
+      margin-top: var(--sp-12);
+      padding-top: var(--sp-10);
+      border-top: 1px solid var(--divider);
+    }
+
+    .booking-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+    }
+
+    .booking-info-icon {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .booking-info-title {
+      font-size: var(--fs-base);
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .booking-info-desc {
+      font-size: var(--fs-sm);
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Modal */
+    .bmodal-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(28,43,30,0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--sp-4);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s ease;
+    }
+
+    .bmodal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .bmodal-card {
+      background: var(--white);
+      border-radius: 14px;
+      width: 100%;
+      max-width: 480px;
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(28,43,30,0.22);
+      transform: translateY(16px);
+      transition: transform 0.18s ease;
+    }
+
+    .bmodal-overlay.open .bmodal-card { transform: translateY(0); }
+
+    .bmodal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: var(--sp-4);
+      padding: var(--sp-6) var(--sp-6) var(--sp-4);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .bmodal-overline {
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: var(--sp-1);
+    }
+
+    .bmodal-title {
+      font-family: var(--font-display);
+      font-size: var(--fs-2xl);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .bmodal-close {
+      flex-shrink: 0;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--muted);
+      cursor: pointer;
+      border: none;
+      background: none;
+      font-size: 1.2rem;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .bmodal-close:hover { background: var(--sage-light); color: var(--sage); }
+
+    .bmodal-summary {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      background: var(--cream);
+      border-radius: 8px;
+      padding: var(--sp-4);
+      margin: var(--sp-5) var(--sp-6) 0;
+    }
+
+    .bmodal-summary-row {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-sm);
+      color: var(--muted);
+    }
+
+    .bmodal-summary-row svg { color: var(--sage); flex-shrink: 0; }
+
+    .bmodal-form {
+      padding: var(--sp-5) var(--sp-6) var(--sp-6);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+
+    .bmodal-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+    }
+
+    .bmodal-field { display: flex; flex-direction: column; gap: var(--sp-2); }
+
+    .bmodal-note {
+      background: var(--terra-light);
+      border-radius: 8px;
+      padding: var(--sp-4);
+      font-size: var(--fs-sm);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    .bmodal-success {
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: var(--sp-12) var(--sp-6);
+      gap: var(--sp-4);
+    }
+
+    .bmodal-success.show { display: flex; }
+
+    .bmodal-check {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--sage-light);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--sage);
+      font-size: 1.5rem;
+    }
+
+    .bmodal-success h3 {
+      font-family: var(--font-display);
+      font-size: var(--fs-3xl);
+      color: var(--text);
+    }
+
+    .bmodal-success p {
+      font-size: var(--fs-base);
+      color: var(--muted);
+      max-width: 320px;
+      line-height: 1.7;
+    }
+
   </style>
 </head>
 <body>
@@ -902,6 +1324,7 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#classes">Classes</a></li>
             <li><a href="#events">Events</a></li>
+            <li><a href="#booking">Book</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
@@ -1128,6 +1551,325 @@
         </div>
       </div>
     </section>
+
+    <!-- ═══ BOOKING ═══ -->
+    <section id="booking" class="section-pad" aria-labelledby="booking-heading">
+      <div class="container">
+
+        <div class="section-header">
+          <p class="eyebrow">Reserve Your Spot</p>
+          <h2 class="section-title" id="booking-heading">Book a Class</h2>
+          <p class="section-sub">All levels welcome — just bring your mat. Classes fill up fast.</p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="booking-filter-row" role="group" aria-label="Filter classes">
+          <button class="booking-filter-btn active" data-filter="all">All Classes</button>
+          <button class="booking-filter-btn" data-filter="regular">Weekly</button>
+          <button class="booking-filter-btn" data-filter="special">Special Events</button>
+        </div>
+
+        <!-- Class cards grid -->
+        <div class="booking-grid" id="booking-grid">
+
+          <!-- Card 1: Featured Special Event -->
+          <article class="bcard bcard-featured" data-type="special">
+            <div class="bcard-body">
+              <div class="bcard-top">
+                <span class="bcard-badge badge-special">Special Event</span>
+                <span class="bcard-price">$25</span>
+              </div>
+              <h3 class="bcard-title">Yoga Under the Oaks</h3>
+              <p class="bcard-subtitle">@ Restivo Family Cellars</p>
+              <div class="bcard-meta">
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>Saturday, June 14th · 10:00 AM</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>75 minutes · All levels</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>18918 Hopfe Road, Hockley TX</span>
+                </div>
+              </div>
+              <div class="bcard-divider"></div>
+            </div>
+            <div class="bcard-footer">
+              <div class="bcard-spots">
+                <span class="bcard-spots-label">6 of 20 spots left</span>
+                <div class="bcard-spots-track">
+                  <div class="bcard-spots-fill low" style="width:30%"></div>
+                </div>
+              </div>
+              <button class="btn btn-gold"
+                      data-modal-title="Yoga Under the Oaks"
+                      data-modal-sub="@ Restivo Family Cellars"
+                      data-modal-date="Saturday, June 14th · 10:00 AM"
+                      data-modal-loc="18918 Hopfe Road, Hockley TX"
+                      data-modal-price="$25">
+                Book Now →
+              </button>
+            </div>
+            <!-- Right date panel -->
+            <div class="bcard-featured-panel" aria-hidden="true">
+              <div>
+                <div class="bcard-featured-day">14</div>
+                <div class="bcard-featured-month">June</div>
+              </div>
+              <div class="bcard-featured-time">10:00 AM</div>
+            </div>
+          </article>
+
+          <!-- Card 2: Slow Flow -->
+          <article class="bcard" data-type="regular">
+            <div class="bcard-body">
+              <div class="bcard-top">
+                <span class="bcard-badge badge-weekly">Weekly</span>
+                <span class="bcard-price">$10</span>
+              </div>
+              <h3 class="bcard-title">Slow Flow Yoga &amp; Mindfulness</h3>
+              <div class="bcard-meta">
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>Tuesday &amp; Thursday</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>9:30 AM · 45 min</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Outdoor Deck · Cypress, TX</span>
+                </div>
+              </div>
+              <div class="bcard-divider"></div>
+            </div>
+            <div class="bcard-footer">
+              <div class="bcard-spots">
+                <span class="bcard-spots-label">8 of 15 spots left</span>
+                <div class="bcard-spots-track">
+                  <div class="bcard-spots-fill" style="width:53%"></div>
+                </div>
+              </div>
+              <button class="btn btn-gold"
+                      data-modal-title="Slow Flow Yoga &amp; Mindfulness"
+                      data-modal-sub=""
+                      data-modal-date="Tuesday &amp; Thursday · 9:30 AM"
+                      data-modal-loc="Outdoor Deck · Cypress, TX"
+                      data-modal-price="$10">
+                Book Now →
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 3: Vinyasa Flow -->
+          <article class="bcard" data-type="regular">
+            <div class="bcard-body">
+              <div class="bcard-top">
+                <span class="bcard-badge badge-weekly">Weekly</span>
+                <span class="bcard-price">$10</span>
+              </div>
+              <h3 class="bcard-title">Vinyasa Flow</h3>
+              <div class="bcard-meta">
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>Every Friday</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>12:00 PM · 45 min</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Outdoor Deck · Cypress, TX</span>
+                </div>
+              </div>
+              <div class="bcard-divider"></div>
+            </div>
+            <div class="bcard-footer">
+              <div class="bcard-spots">
+                <span class="bcard-spots-label">12 of 15 spots left</span>
+                <div class="bcard-spots-track">
+                  <div class="bcard-spots-fill" style="width:80%"></div>
+                </div>
+              </div>
+              <button class="btn btn-gold"
+                      data-modal-title="Vinyasa Flow"
+                      data-modal-sub=""
+                      data-modal-date="Every Friday · 12:00 PM"
+                      data-modal-loc="Outdoor Deck · Cypress, TX"
+                      data-modal-price="$10">
+                Book Now →
+              </button>
+            </div>
+          </article>
+
+          <!-- Card 4: Sunrise Sound Bath -->
+          <article class="bcard" data-type="special">
+            <div class="bcard-body">
+              <div class="bcard-top">
+                <span class="bcard-badge badge-special">Special Event</span>
+                <span class="bcard-price">$18</span>
+              </div>
+              <h3 class="bcard-title">Sunrise Sound Bath</h3>
+              <div class="bcard-meta">
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                  <span>Saturday, July 5th</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                  <span>7:00 AM · 60 min</span>
+                </div>
+                <div class="bcard-meta-row">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                  <span>Outdoor Deck · Cypress, TX</span>
+                </div>
+              </div>
+              <div class="bcard-divider"></div>
+            </div>
+            <div class="bcard-footer">
+              <div class="bcard-spots">
+                <span class="bcard-spots-label">2 of 12 spots left</span>
+                <div class="bcard-spots-track">
+                  <div class="bcard-spots-fill low" style="width:17%"></div>
+                </div>
+              </div>
+              <button class="btn btn-gold"
+                      data-modal-title="Sunrise Sound Bath"
+                      data-modal-sub=""
+                      data-modal-date="Saturday, July 5th · 7:00 AM"
+                      data-modal-loc="Outdoor Deck · Cypress, TX"
+                      data-modal-price="$18">
+                Book Now →
+              </button>
+            </div>
+          </article>
+
+        </div><!-- /booking-grid -->
+
+        <!-- ═══════════════════════════════════════
+             WIX BOOKING EMBED — Replace cards above
+             with this block once Chelsea provides
+             her Wix embed code.
+
+             To get embed code:
+             Wix Dashboard → Bookings →
+             Website Widgets → Service List →
+             Embed → Copy Code
+
+             Then paste it inside this div and
+             remove the class-card grid above.
+        ═══════════════════════════════════════ -->
+        <div id="wix-booking-embed"
+             style="display:none; width:100%; max-width:800px; margin:0 auto;">
+          <!-- PASTE WIX EMBED CODE HERE -->
+        </div>
+
+        <!-- Info strip -->
+        <div class="booking-info-strip">
+          <div class="booking-info-item">
+            <span class="booking-info-icon">🧘</span>
+            <p class="booking-info-title">All Levels Welcome</p>
+            <p class="booking-info-desc">Beginners to advanced — no experience needed</p>
+          </div>
+          <div class="booking-info-item">
+            <span class="booking-info-icon">🌿</span>
+            <p class="booking-info-title">Bring Your Mat</p>
+            <p class="booking-info-desc">Outdoor deck in Cypress, dress comfortably</p>
+          </div>
+          <div class="booking-info-item">
+            <span class="booking-info-icon">💳</span>
+            <p class="booking-info-title">Pay at Class</p>
+            <p class="booking-info-desc">Venmo, cash, or card accepted</p>
+          </div>
+          <div class="booking-info-item">
+            <span class="booking-info-icon">📞</span>
+            <p class="booking-info-title">Questions?</p>
+            <p class="booking-info-desc">Text Chelsea · <a href="tel:2817443202" style="color:var(--sage);">281-744-3202</a></p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Booking modal -->
+    <div class="bmodal-overlay" id="bmodal" role="dialog" aria-modal="true" aria-labelledby="bmodal-title-text">
+      <div class="bmodal-card">
+
+        <div class="bmodal-header">
+          <div>
+            <p class="bmodal-overline">Reserve Your Spot</p>
+            <h3 class="bmodal-title" id="bmodal-title-text"></h3>
+          </div>
+          <button class="bmodal-close" id="bmodal-close" aria-label="Close">✕</button>
+        </div>
+
+        <div id="bmodal-form-wrap">
+          <div class="bmodal-summary" id="bmodal-summary">
+            <div class="bmodal-summary-row" id="bmodal-s-date">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span></span>
+            </div>
+            <div class="bmodal-summary-row" id="bmodal-s-loc">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span></span>
+            </div>
+            <div class="bmodal-summary-row" id="bmodal-s-price">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span></span>
+            </div>
+          </div>
+
+          <form class="bmodal-form" id="bmodal-form" novalidate>
+            <div class="bmodal-row">
+              <div class="bmodal-field field">
+                <label for="bm-first">First Name</label>
+                <input type="text" id="bm-first" name="first_name" placeholder="Jane" autocomplete="given-name" required>
+              </div>
+              <div class="bmodal-field field">
+                <label for="bm-last">Last Name</label>
+                <input type="text" id="bm-last" name="last_name" placeholder="Smith" autocomplete="family-name" required>
+              </div>
+            </div>
+            <div class="bmodal-field field">
+              <label for="bm-email">Email</label>
+              <input type="email" id="bm-email" name="email" placeholder="jane@example.com" autocomplete="email" required>
+            </div>
+            <div class="bmodal-field field">
+              <label for="bm-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+              <input type="tel" id="bm-phone" name="phone" placeholder="(281) 555-0000" autocomplete="tel">
+            </div>
+            <div class="bmodal-field field">
+              <label for="bm-people">Number of People</label>
+              <select id="bm-people" name="people">
+                <option value="1">1 person</option>
+                <option value="2">2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+              </select>
+            </div>
+            <div class="bmodal-note">
+              💛 <strong>Payment collected at class</strong> — Venmo, cash, or card welcome!
+            </div>
+            <button type="submit" class="btn btn-gold btn-full" style="font-size:var(--fs-base);">
+              Confirm Reservation →
+            </button>
+          </form>
+        </div>
+
+        <div class="bmodal-success" id="bmodal-success">
+          <div class="bmodal-check">✓</div>
+          <h3>You're on the mat!</h3>
+          <p>Chelsea will text you a confirmation before class. See you on the deck! 🌿</p>
+          <button class="btn btn-gold" id="bmodal-done">Done</button>
+        </div>
+
+      </div>
+    </div>
 
     <!-- ═══ ABOUT ═══ -->
     <section id="about" class="section-pad" aria-labelledby="about-heading">
@@ -1486,5 +2228,86 @@
     });
   </script>
   <script>lucide.createIcons();</script>
+
+  <script>
+  /* ── Booking Section JS ── */
+  (function () {
+    /* Filter tabs */
+    var filterBtns = document.querySelectorAll('.booking-filter-btn');
+    var cards = document.querySelectorAll('.bcard');
+
+    filterBtns.forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var filter = btn.getAttribute('data-filter');
+        filterBtns.forEach(function (b) { b.classList.remove('active'); });
+        btn.classList.add('active');
+        cards.forEach(function (card) {
+          if (filter === 'all' || card.getAttribute('data-type') === filter) {
+            card.style.display = '';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    /* Modal */
+    var overlay = document.getElementById('bmodal');
+    var closeBtn = document.getElementById('bmodal-close');
+    var doneBtn = document.getElementById('bmodal-done');
+    var form = document.getElementById('bmodal-form');
+    var formWrap = document.getElementById('bmodal-form-wrap');
+    var successEl = document.getElementById('bmodal-success');
+    var titleEl = document.getElementById('bmodal-title-text');
+    var sDate = document.getElementById('bmodal-s-date');
+    var sLoc = document.getElementById('bmodal-s-loc');
+    var sPrice = document.getElementById('bmodal-s-price');
+
+    function openModal(btn) {
+      titleEl.textContent = btn.getAttribute('data-modal-title') || '';
+      var sub = btn.getAttribute('data-modal-sub') || '';
+      if (sub) titleEl.textContent += ' — ' + sub;
+      sDate.querySelector('span:last-child').textContent = btn.getAttribute('data-modal-date') || '';
+      sLoc.querySelector('span:last-child').textContent = btn.getAttribute('data-modal-loc') || '';
+      sPrice.querySelector('span:last-child').textContent = btn.getAttribute('data-modal-price') || '';
+      formWrap.style.display = '';
+      successEl.style.display = 'none';
+      form.reset();
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      closeBtn.focus();
+    }
+
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    document.querySelectorAll('.bcard-book-btn').forEach(function (btn) {
+      btn.addEventListener('click', function () { openModal(btn); });
+    });
+
+    closeBtn.addEventListener('click', closeModal);
+
+    doneBtn.addEventListener('click', function () {
+      closeModal();
+      form.reset();
+    });
+
+    overlay.addEventListener('click', function (e) {
+      if (e.target === overlay) closeModal();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+    });
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      formWrap.style.display = 'none';
+      successEl.style.display = '';
+    });
+  })();
+  </script>
 </body>
 </html>
