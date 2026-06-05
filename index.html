@@ -827,6 +827,24 @@
       flex-shrink: 0;
     }
 
+    /* Centered social icons row */
+    .footer-social-center {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+      padding: var(--sp-4) 0;
+    }
+    .footer-social-center a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 1;
+      transition: opacity 0.2s ease;
+    }
+    .footer-social-center a:hover { opacity: 0.75; }
+    .footer-social-center svg { color: rgba(255,255,255,0.75); }
+
     @media (max-width: 600px) {
       .footer-bottom { justify-content: center; }
       .footer-seal   { order: -1; margin-bottom: var(--sp-2); }
@@ -2052,10 +2070,10 @@
             </a>
             <p>Outdoor yoga for all levels in Cypress, TX. Embrace nature, breathe deep, and connect with community every week on the deck.</p>
             <div class="social-row" aria-label="Social media">
-              <a href="#" class="social-btn" aria-label="JoyFull Yoga on Facebook" rel="noopener noreferrer">
+              <a href="https://www.facebook.com" class="social-btn" aria-label="JoyFull Yoga on Facebook" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="facebook" width="18" height="18"></i>
               </a>
-              <a href="#" class="social-btn" aria-label="JoyFull Yoga on Instagram" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/joyfullyoga_cypress/" class="social-btn" aria-label="JoyFull Yoga on Instagram" target="_blank" rel="noopener noreferrer">
                 <i data-lucide="instagram" width="18" height="18"></i>
               </a>
               <a href="#" class="social-btn" aria-label="JoyFull Yoga on X (Twitter)" rel="noopener noreferrer">
@@ -2118,6 +2136,15 @@
         </a>
 
         <p class="footer-copy">Embrace Nature, Breathe, Connect.</p>
+      </div>
+
+      <div class="footer-social-center">
+        <a href="https://www.instagram.com/joyfullyoga_cypress/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i data-lucide="instagram" width="30" height="30" aria-hidden="true"></i>
+        </a>
+        <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i data-lucide="facebook" width="30" height="30" aria-hidden="true"></i>
+        </a>
       </div>
     </div>
   </footer>
