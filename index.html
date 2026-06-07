@@ -1289,28 +1289,35 @@
 
     /* ─── HERO CAROUSEL ───────────────────────────────────── */
     @media (max-width: 767px) {
-      /* Fill viewport, center text — dots stay absolutely pinned at bottom */
+      /* Stretch hero to viewport, leave 60px above the pinned dots */
       #home {
         height: 85svh;
         min-height: 500px;
-        justify-content: center;
+        justify-content: flex-start;
+        align-items: stretch;
         padding-top: var(--nav-h);
-        padding-bottom: 60px; /* clears the absolutely-positioned dots */
+        padding-bottom: 60px;
       }
       /* Keep subject in frame on portrait screens */
       .hc-slide img { object-position: center top; }
-      /* Full-width text block */
+      /* hero-inner fills all available height so margin-top:auto works */
       .hero-inner {
-        width: 100%;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         text-align: center;
+        padding: var(--sp-4) var(--sp-6) 0;
       }
-      /* Reduce gap under subtitle */
-      .hero-sub { margin-bottom: var(--sp-6); }
-      /* Stack buttons vertically, full width */
+      /* Collapse bottom margin — space-between gap handles breathing room */
+      .hero-sub { margin-bottom: 0; }
+      /* Push buttons to bottom of hero-inner; dots still pinned separately */
       .hero-ctas {
+        margin-top: auto;
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
+        width: 100%;
       }
       .hero-ctas a {
         width: 100%;
