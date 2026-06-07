@@ -1289,7 +1289,34 @@
 
     /* ─── HERO CAROUSEL ───────────────────────────────────── */
     @media (max-width: 767px) {
-      #home { height: 400px; }
+      /* Fill viewport, push text to bottom so image shows above */
+      #home {
+        height: 85svh;
+        min-height: 500px;
+        justify-content: flex-end;
+        padding-top: var(--nav-h);
+        padding-bottom: var(--sp-6);
+      }
+      /* Keep subject in frame on portrait screens */
+      .hc-slide img { object-position: center top; }
+      /* Full-width text block anchored at bottom */
+      .hero-inner {
+        width: 100%;
+        text-align: center;
+      }
+      /* Reduce gap under subtitle so buttons aren't too far down */
+      .hero-sub { margin-bottom: var(--sp-6); }
+      /* Stack buttons vertically, full width */
+      .hero-ctas {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+      .hero-ctas a {
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+      }
     }
 
     .hc-slide {
