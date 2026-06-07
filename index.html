@@ -1289,7 +1289,7 @@
 
     /* ─── HERO CAROUSEL ───────────────────────────────────── */
     @media (max-width: 767px) {
-      /* Stretch hero to viewport, leave 60px above the pinned dots */
+      /* Full-viewport hero, leave 60px above the pinned dots */
       #home {
         height: 85svh;
         min-height: 500px;
@@ -1300,24 +1300,37 @@
       }
       /* Keep subject in frame on portrait screens */
       .hc-slide img { object-position: center top; }
-      /* hero-inner fills all available height so margin-top:auto works */
+      /* hero-inner is a flex column that fills all available height */
       .hero-inner {
         flex: 1;
         display: flex;
         flex-direction: column;
         align-items: center;
         text-align: center;
-        padding: var(--sp-4) var(--sp-6) 0;
+        padding: 0 var(--sp-6);
       }
-      /* Collapse bottom margin — space-between gap handles breathing room */
-      .hero-sub { margin-bottom: 0; }
-      /* Push buttons to bottom of hero-inner; dots still pinned separately */
+      /* Text group expands to fill space above buttons,
+         then centers its content vertically within that space */
+      .hero-text-group {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+      /* Collapse individual margins — gap on hero-text-group handles spacing */
+      .hero-eyebrow { margin-bottom: 0; }
+      .hero-h1      { margin-bottom: 0; }
+      .hero-sub     { margin-bottom: 0; }
+      /* Buttons: fixed height at bottom, don't grow */
       .hero-ctas {
-        margin-top: auto;
+        flex-shrink: 0;
         flex-direction: column;
         align-items: stretch;
         gap: 12px;
         width: 100%;
+        margin-bottom: 8px;
       }
       .hero-ctas a {
         width: 100%;
@@ -1465,9 +1478,11 @@
 
       <!-- Hero text -->
       <div class="hero-inner">
-        <p class="hero-eyebrow">Outdoor Yoga · Cypress, TX</p>
-        <h1 class="hero-h1" id="hero-heading">Welcome to Yoga on the Deck.</h1>
-        <p class="hero-sub">Embrace Nature, Breathe, Connect.</p>
+        <div class="hero-text-group">
+          <p class="hero-eyebrow">Outdoor Yoga · Cypress, TX</p>
+          <h1 class="hero-h1" id="hero-heading">Welcome to Yoga on the Deck.</h1>
+          <p class="hero-sub">Embrace Nature, Breathe, Connect.</p>
+        </div>
         <div class="hero-ctas">
           <a href="#classes" class="btn btn-gold">View Classes →</a>
           <a href="#events"  class="btn btn-outline-white">Upcoming Events</a>
