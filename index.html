@@ -1289,22 +1289,22 @@
 
     /* ─── HERO CAROUSEL ───────────────────────────────────── */
     @media (max-width: 767px) {
-      /* Fill viewport, push text to bottom so image shows above */
+      /* Fill viewport, center text — dots stay absolutely pinned at bottom */
       #home {
         height: 85svh;
         min-height: 500px;
-        justify-content: flex-end;
+        justify-content: center;
         padding-top: var(--nav-h);
-        padding-bottom: var(--sp-6);
+        padding-bottom: 60px; /* clears the absolutely-positioned dots */
       }
       /* Keep subject in frame on portrait screens */
       .hc-slide img { object-position: center top; }
-      /* Full-width text block anchored at bottom */
+      /* Full-width text block */
       .hero-inner {
         width: 100%;
         text-align: center;
       }
-      /* Reduce gap under subtitle so buttons aren't too far down */
+      /* Reduce gap under subtitle */
       .hero-sub { margin-bottom: var(--sp-6); }
       /* Stack buttons vertically, full width */
       .hero-ctas {
