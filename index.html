@@ -1395,6 +1395,28 @@
       font-weight: 800;
     }
 
+    /* ─── EVENT FLYER PDF ────────────────────────────────── */
+    .event-flyer-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-4);
+    }
+    .event-flyer-pdf {
+      width: 100%;
+      height: 480px;
+      border: none;
+      border-radius: 16px;
+      background: var(--white);
+    }
+    .event-flyer-dl {
+      align-self: stretch;
+      text-align: center;
+    }
+    @media (max-width: 767px) {
+      .event-flyer-pdf { height: 360px; }
+    }
+
     /* ─── TESTIMONIALS ────────────────────────────────────── */
     #testimonials {
       background: var(--sage-dark);
@@ -1776,14 +1798,15 @@
             <a href="#booking" class="btn btn-gold">RSVP Now →</a>
           </div>
 
-          <!-- Right: event flyer placeholder -->
-          <div>
-            <div class="event-flyer event-flyer-placeholder">
-              <div style="width:100%;height:320px;border-radius:16px;background:var(--sage-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-4);">
-                <i data-lucide="image" width="48" height="48" style="color:rgba(255,255,255,0.35);" aria-hidden="true"></i>
-                <p style="font-family:var(--font-body);font-size:var(--fs-sm);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0;">Flyer Coming Soon</p>
-              </div>
-            </div>
+          <!-- Right: event flyer PDF -->
+          <div class="event-flyer-wrap">
+            <iframe
+              src="Brown and Peach Simple Wellness Weekend Flyer.pdf"
+              class="event-flyer-pdf"
+              title="Summer Evening Yoga — Event Flyer"
+              aria-label="Event flyer PDF"
+            ></iframe>
+            <a href="Brown and Peach Simple Wellness Weekend Flyer.pdf" download class="btn btn-outline-white event-flyer-dl">Download Flyer ↓</a>
           </div>
 
         </div>
