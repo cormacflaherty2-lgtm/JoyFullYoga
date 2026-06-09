@@ -1396,25 +1396,17 @@
     }
 
     /* ─── EVENT FLYER PDF ────────────────────────────────── */
-    .event-flyer-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: var(--sp-4);
-    }
+    .event-flyer-wrap { display: block; }
     .event-flyer-pdf {
       width: 100%;
-      height: 480px;
+      height: 520px;
       border: none;
-      border-radius: 16px;
+      border-radius: 12px;
       background: var(--white);
-    }
-    .event-flyer-dl {
-      align-self: stretch;
-      text-align: center;
+      display: block;
     }
     @media (max-width: 767px) {
-      .event-flyer-pdf { height: 360px; }
+      .event-flyer-pdf { height: 400px; }
     }
 
     /* ─── TESTIMONIALS ────────────────────────────────────── */
@@ -1773,14 +1765,9 @@
           <!-- Left: copy + details -->
           <div class="events-left">
             <p class="eyebrow">Upcoming Event</p>
-            <h2 class="section-title" id="events-heading">Summer Evening<br>Yoga</h2>
-            <p class="section-sub">Join us for a special outdoor evening yoga session on the deck — a perfect way to unwind and reconnect with your practice under the open sky.</p>
+            <h2 class="section-title" id="events-heading">Yoga + Soundbowls<br>+ Green Compass</h2>
 
             <ul class="event-details">
-              <li class="event-detail-row">
-                <i data-lucide="map-pin" width="18" height="18" aria-hidden="true"></i>
-                <span>Outdoor on the Deck<br>Cypress, TX</span>
-              </li>
               <li class="event-detail-row">
                 <i data-lucide="calendar" width="18" height="18" aria-hidden="true"></i>
                 <span>Thursday, June 26, 2026</span>
@@ -1789,24 +1776,19 @@
                 <i data-lucide="clock" width="18" height="18" aria-hidden="true"></i>
                 <span>7:00 PM</span>
               </li>
-              <li class="event-detail-row">
-                <i data-lucide="users" width="18" height="18" aria-hidden="true"></i>
-                <span>All levels welcome — bring your mat</span>
-              </li>
             </ul>
-
-            <a href="#booking" class="btn btn-gold">RSVP Now →</a>
           </div>
 
-          <!-- Right: event flyer PDF -->
+          <!-- Right: event flyer -->
           <div class="event-flyer-wrap">
-            <iframe
-              src="Brown and Peach Simple Wellness Weekend Flyer.pdf"
+            <object
+              data="Brown and Peach Simple Wellness Weekend Flyer.pdf#toolbar=0&navpanes=0&scrollbar=0"
+              type="application/pdf"
               class="event-flyer-pdf"
-              title="Summer Evening Yoga — Event Flyer"
-              aria-label="Event flyer PDF"
-            ></iframe>
-            <a href="Brown and Peach Simple Wellness Weekend Flyer.pdf" download class="btn btn-outline-white event-flyer-dl">Download Flyer ↓</a>
+              aria-label="Yoga + Soundbowls + Green Compass event flyer"
+            >
+              <p style="color:rgba(255,255,255,0.6);text-align:center;padding:var(--sp-6);">Unable to display PDF. <a href="Brown and Peach Simple Wellness Weekend Flyer.pdf" style="color:var(--gold);">View flyer</a></p>
+            </object>
           </div>
 
         </div>
