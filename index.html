@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JoyFull Yoga — Cypress, TX | Yoga on the Deck</title>
-  <meta name="description" content="JoyFull Yoga in Cypress, TX. Outdoor yoga on the deck for all levels. Weekly classes Tuesday, Thursday & Friday. Embrace Nature, Breathe, Connect.">
+  <title>joyFULL Yoga — Cypress, TX | Yoga on the Deck</title>
+  <meta name="description" content="joyFULL Yoga in Cypress, TX. Outdoor yoga on the deck for all levels. Weekly classes Tuesday, Thursday & Friday. Embrace Nature, Breathe, Connect.">
   <meta name="theme-color" content="#3D6B47">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
@@ -342,9 +342,10 @@
     .hero-h1 {
       font-size: var(--fs-6xl);
       font-weight: 400;
-      font-style: italic;
+      font-style: normal;
       color: var(--white);
       margin-bottom: var(--sp-4);
+      line-height: 1.15;
     }
 
     .hero-sub {
@@ -1386,6 +1387,113 @@
     }
     .hc-dot.hc-dot-active { opacity: 1; }
 
+    /* ─── BRAND NAME ──────────────────────────────────────── */
+    .brand-name strong,
+    .eyebrow strong,
+    .footer-copy strong,
+    p strong {
+      font-weight: 800;
+    }
+
+    /* ─── TESTIMONIALS ────────────────────────────────────── */
+    #testimonials {
+      background: var(--sage-dark);
+      padding: var(--sp-20) 0;
+    }
+    #testimonials .eyebrow { color: var(--gold); }
+    #testimonials .section-title { color: var(--white); }
+    #testimonials .section-sub   { color: rgba(255,255,255,0.6); }
+
+    .tc-carousel {
+      position: relative;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 var(--sp-12);
+    }
+    .tc-slide {
+      display: none;
+      animation: tc-fade 0.5s ease;
+    }
+    .tc-slide.tc-active { display: block; }
+    @keyframes tc-fade {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .tc-card {
+      text-align: center;
+      padding: var(--sp-8) var(--sp-6);
+    }
+    .tc-quote-icon {
+      font-family: var(--font-display);
+      font-size: 80px;
+      line-height: 0.6;
+      color: var(--gold);
+      margin-bottom: var(--sp-6);
+      user-select: none;
+    }
+    .tc-quote {
+      font-family: var(--font-display);
+      font-size: var(--fs-xl);
+      font-style: italic;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.65;
+      margin: 0 0 var(--sp-6);
+    }
+    .tc-author {
+      font-family: var(--font-body);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-style: normal;
+    }
+    .tc-prev, .tc-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tc-prev { left: 0; }
+    .tc-next { right: 0; }
+    .tc-prev:hover, .tc-next:hover {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+    }
+    .tc-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: var(--sp-8);
+    }
+    .tc-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.35);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.25s;
+    }
+    .tc-dot.tc-dot-active { background: var(--gold); }
+    @media (max-width: 600px) {
+      .tc-carousel { padding: 0 var(--sp-8); }
+      .tc-quote { font-size: var(--fs-lg); }
+    }
+
   </style>
 </head>
 <body>
@@ -1410,9 +1518,9 @@
         <div class="nav-inner">
 
           <!-- Logo -->
-          <a href="#home" aria-label="JoyFull Yoga — home">
+          <a href="#home" aria-label="joyFULL Yoga — home">
             <img src="assets/Logo.png"
-                 alt="JoyFull Yoga"
+                 alt="joyFULL Yoga"
                  height="130"
                  style="display:block; height:130px; width:auto;">
           </a>
@@ -1452,7 +1560,7 @@
 
       <!-- Slides -->
       <div class="hc-slide hc-active">
-        <img src="Yoga_GroupClass2.JPG" alt="JoyFull Yoga outdoor group class at the vineyard" loading="eager">
+        <img src="Yoga_GroupClass2.JPG" alt="joyFULL Yoga outdoor group class at the vineyard" loading="eager">
       </div>
       <div class="hc-slide">
         <img src="Yoga_WomenClass1.JPEG" alt="Women's yoga class by the pool" loading="lazy">
@@ -1467,7 +1575,7 @@
         <img src="Yoga_Solo1.JPG" alt="Chelsea demonstrating a yoga pose" loading="lazy">
       </div>
       <div class="hc-slide">
-        <img src="Yoga_KidsClass2.JPG" alt="Chelsea and student in JoyFull Yoga shirts" loading="lazy">
+        <img src="Yoga_KidsClass2.JPG" alt="Chelsea and student in joyFULL Yoga shirts" loading="lazy">
       </div>
       <div class="hc-slide">
         <img src="Yoga_Mother.JPG" alt="Chelsea smiling at outdoor yoga session" loading="lazy">
@@ -1480,7 +1588,7 @@
       <div class="hero-inner">
         <div class="hero-text-group">
           <p class="hero-eyebrow">Outdoor Yoga · Cypress, TX</p>
-          <h1 class="hero-h1" id="hero-heading">Welcome to Yoga on the Deck.</h1>
+          <h1 class="hero-h1" id="hero-heading">Welcome to<br>Yoga on the Deck</h1>
           <p class="hero-sub">Embrace Nature, Breathe, Connect.</p>
         </div>
         <div class="hero-ctas">
@@ -1529,27 +1637,31 @@
 
         <div class="classes-grid">
 
-          <!-- Card 1: Slow Flow -->
+          <!-- Card 1: Tuesday 9:30 AM -->
           <article class="class-card">
             <img
               src="Yoga_GroupClass3.JPG"
-              alt="Outdoor slow flow yoga group class in Cypress TX"
+              alt="Outdoor vinyasa yoga group class in Cypress TX"
               loading="lazy"
               decoding="async"
               width="400"
               height="180"
               style="width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-radius:16px 16px 0 0;">
             <div class="card-body">
-              <span class="class-tag">Slow Flow</span>
-              <h3 class="class-title">9:30a Slow Flow Yoga &amp; Mindfulness</h3>
+              <span class="class-tag">Vinyasa Flow</span>
+              <h3 class="class-title">Vinyasa Flow &amp; Mindfulness</h3>
               <div class="class-meta">
                 <div class="class-meta-row">
                   <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
-                  <span>Tuesday &amp; Thursday</span>
+                  <span>Tuesday</span>
                 </div>
                 <div class="class-meta-row">
                   <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
-                  <span>45 min</span>
+                  <span>9:30 AM</span>
+                </div>
+                <div class="class-meta-row">
+                  <i data-lucide="map-pin" width="15" height="15" aria-hidden="true"></i>
+                  <span>Outdoor on the Deck · Cypress, TX</span>
                 </div>
               </div>
               <div class="class-price">$10</div>
@@ -1559,56 +1671,53 @@
             </div>
           </article>
 
-          <!-- Card 2: Special Event -->
-          <article class="class-card card-special">
+          <!-- Card 2: Thursday 9:30 AM -->
+          <article class="class-card">
             <img
-              src="Yoga_Mother.JPG"
-              alt="Chelsea smiling at a JoyFull Yoga special event in Cypress TX"
+              src="Yoga_WomenClass1.JPEG"
+              alt="Women's vinyasa yoga class on the outdoor deck"
               loading="lazy"
               decoding="async"
               width="400"
               height="180"
               style="width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-radius:16px 16px 0 0;">
             <div class="card-body">
-              <span class="class-tag tag-special">Special Event</span>
-              <h3 class="class-title">5/9 Yoga Under the Oaks @ Restivo Family Cellars</h3>
+              <span class="class-tag">Vinyasa Flow</span>
+              <h3 class="class-title">Vinyasa Flow &amp; Mindfulness</h3>
               <div class="class-meta">
                 <div class="class-meta-row">
-                  <i data-lucide="map-pin" width="15" height="15" aria-hidden="true"></i>
-                  <span>18918 Hopfe Road, Hockley, TX</span>
-                </div>
-                <div class="class-meta-row">
                   <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
-                  <span>Saturday, May 9th</span>
+                  <span>Thursday</span>
                 </div>
                 <div class="class-meta-row">
                   <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
-                  <span>11:30 AM</span>
+                  <span>9:30 AM</span>
                 </div>
                 <div class="class-meta-row">
-                  <i data-lucide="sparkles" width="15" height="15" aria-hidden="true"></i>
-                  <span>Mother's Day Weekend Yoga</span>
+                  <i data-lucide="map-pin" width="15" height="15" aria-hidden="true"></i>
+                  <span>Outdoor on the Deck · Cypress, TX</span>
                 </div>
               </div>
+              <div class="class-price">$10</div>
               <div class="card-footer">
-                <a href="#events" class="btn btn-terracotta btn-full">Reserve Your Spot →</a>
+                <a href="#booking" class="btn btn-gold btn-full">Book Now →</a>
               </div>
             </div>
           </article>
 
-          <!-- Card 3: Vinyasa -->
+          <!-- Card 3: Friday 12:00 PM -->
           <article class="class-card">
             <img
               src="Yoga_Solo1.JPG"
-              alt="Chelsea demonstrating a vinyasa yoga pose"
+              alt="Chelsea teaching vinyasa flow on the outdoor deck"
               loading="lazy"
               decoding="async"
               width="400"
               height="180"
               style="width:100%;height:180px;object-fit:cover;object-position:center;display:block;border-radius:16px 16px 0 0;">
             <div class="card-body">
-              <span class="class-tag">Vinyasa</span>
-              <h3 class="class-title">12p Vinyasa Flow</h3>
+              <span class="class-tag">Vinyasa Flow</span>
+              <h3 class="class-title">Vinyasa Flow &amp; Mindfulness</h3>
               <div class="class-meta">
                 <div class="class-meta-row">
                   <i data-lucide="calendar" width="15" height="15" aria-hidden="true"></i>
@@ -1616,7 +1725,11 @@
                 </div>
                 <div class="class-meta-row">
                   <i data-lucide="clock" width="15" height="15" aria-hidden="true"></i>
-                  <span>45 min</span>
+                  <span>12:00 PM</span>
+                </div>
+                <div class="class-meta-row">
+                  <i data-lucide="map-pin" width="15" height="15" aria-hidden="true"></i>
+                  <span>Outdoor on the Deck · Cypress, TX</span>
                 </div>
               </div>
               <div class="class-price">$10</div>
@@ -1637,43 +1750,39 @@
 
           <!-- Left: copy + details -->
           <div class="events-left">
-            <p class="eyebrow">Special Event</p>
-            <h2 class="section-title" id="events-heading">Mother's Day<br>Weekend Yoga</h2>
-            <p class="section-sub">Celebrate Mother's Day weekend with an outdoor yoga experience like no other — surrounded by oak trees, fresh air, and community at Restivo Family Cellars in Hockley, TX.</p>
+            <p class="eyebrow">Upcoming Event</p>
+            <h2 class="section-title" id="events-heading">Summer Evening<br>Yoga</h2>
+            <p class="section-sub">Join us for a special outdoor evening yoga session on the deck — a perfect way to unwind and reconnect with your practice under the open sky.</p>
 
             <ul class="event-details">
               <li class="event-detail-row">
                 <i data-lucide="map-pin" width="18" height="18" aria-hidden="true"></i>
-                <span>Restivo Family Cellars<br>18918 Hopfe Road, Hockley, TX</span>
+                <span>Outdoor on the Deck<br>Cypress, TX</span>
               </li>
               <li class="event-detail-row">
                 <i data-lucide="calendar" width="18" height="18" aria-hidden="true"></i>
-                <span>Saturday, May 9th, 2025</span>
+                <span>Thursday, June 26, 2026</span>
               </li>
               <li class="event-detail-row">
                 <i data-lucide="clock" width="18" height="18" aria-hidden="true"></i>
-                <span>11:30 AM</span>
+                <span>7:00 PM</span>
               </li>
               <li class="event-detail-row">
                 <i data-lucide="users" width="18" height="18" aria-hidden="true"></i>
-                <span>All levels welcome — bring your mat and enjoy the morning</span>
+                <span>All levels welcome — bring your mat</span>
               </li>
             </ul>
 
-            <a href="tel:2817443202" class="btn btn-gold">Reserve Your Spot →</a>
+            <a href="#booking" class="btn btn-gold">RSVP Now →</a>
           </div>
 
-          <!-- Right: event photo card -->
+          <!-- Right: event flyer placeholder -->
           <div>
-            <div class="event-flyer">
-              <img
-                src="Yoga_GroupClass5.JPG"
-                alt="JoyFull Yoga outdoor group class at a special event"
-                loading="lazy"
-                decoding="async"
-                width="560"
-                height="320"
-                style="width:100%;height:320px;object-fit:cover;object-position:center;border-radius:16px;display:block;">
+            <div class="event-flyer event-flyer-placeholder">
+              <div style="width:100%;height:320px;border-radius:16px;background:var(--sage-dark);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--sp-4);">
+                <i data-lucide="image" width="48" height="48" style="color:rgba(255,255,255,0.35);" aria-hidden="true"></i>
+                <p style="font-family:var(--font-body);font-size:var(--fs-sm);font-weight:700;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.45);margin:0;">Flyer Coming Soon</p>
+              </div>
             </div>
           </div>
 
@@ -2007,10 +2116,10 @@
 
           <!-- Left: copy -->
           <div class="about-copy">
-            <p class="eyebrow">About JoyFull Yoga</p>
+            <p class="eyebrow">About joy<strong>FULL</strong> Yoga</p>
             <h2 class="section-title" id="about-heading">Outdoor Yoga in the Heart of Cypress, TX</h2>
 
-            <p>JoyFull Yoga was born from a simple belief: the best place to practice yoga is outside. Our classes take place on an open-air deck surrounded by the natural beauty of Cypress, Texas — where birdsong replaces the gym playlist and the breeze is your savasana companion.</p>
+            <p>joy<strong>FULL</strong> Yoga was born from a simple belief: the best place to practice yoga is outside. Our classes take place on an open-air deck surrounded by the natural beauty of Cypress, Texas — where birdsong replaces the gym playlist and the breeze is your savasana companion.</p>
 
             <p>We welcome yogis of every level — whether you've never unrolled a mat or you've been practicing for decades. Our small, community-centered classes make it easy to show up as you are, move at your own pace, and connect with others who share a love for mindful movement.</p>
 
@@ -2173,6 +2282,57 @@
       </div>
     </section>
 
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section id="testimonials" class="section-pad" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">What Students Are Saying</p>
+          <h2 class="section-title" id="testimonials-heading">What Students Are Saying</h2>
+          <p class="section-sub">joy<strong>FULL</strong> Yoga · Cypress, TX</p>
+        </div>
+
+        <div class="tc-carousel" id="tc-carousel">
+
+          <!-- ── To add a new testimonial: copy one tc-slide block below ── -->
+
+          <!-- Testimonial 1: Chelsea — founder statement -->
+          <div class="tc-slide tc-active">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">JOYFULL YOGA is committed to providing enriching outdoor yoga experiences. With ten years of practice and a completed 200-hour teacher training, my passion is to inspire peace and mindfulness through yoga, meditation, and breathing techniques. Our world is busy and fast, so let's treat ourselves and our bodies to a reset with mindfulness and yoga.</blockquote>
+              <cite class="tc-author">— Chelsea, Founder &amp; Instructor</cite>
+            </div>
+          </div>
+
+          <!-- Testimonial 2: placeholder -->
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">This class completely changed my mornings. Being outside on the deck makes every session feel like a retreat.</blockquote>
+              <cite class="tc-author">— Happy Student</cite>
+            </div>
+          </div>
+
+          <!-- Testimonial 3: placeholder -->
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">Chelsea is an incredible instructor — so welcoming to beginners. I've never felt more at peace.</blockquote>
+              <cite class="tc-author">— Happy Student</cite>
+            </div>
+          </div>
+
+          <!-- Arrow navigation -->
+          <button class="tc-prev" id="tc-prev" aria-label="Previous testimonial">&#8249;</button>
+          <button class="tc-next" id="tc-next" aria-label="Next testimonial">&#8250;</button>
+
+          <!-- Dot indicators (built by JS) -->
+          <div class="tc-dots" id="tc-dots" role="tablist" aria-label="Testimonial indicators"></div>
+
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ═══ FOOTER ═══ -->
@@ -2183,19 +2343,19 @@
 
           <!-- Brand -->
           <div class="footer-brand">
-            <a href="#home" aria-label="JoyFull Yoga — home">
+            <a href="#home" aria-label="joyFULL Yoga — home">
               <div style="background:#ffffff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;line-height:0;width:72px;height:72px;">
                 <img src="assets/Logo.png"
-                     alt="JoyFull Yoga"
+                     alt="joyFULL Yoga"
                      style="display:block; height:68px; width:68px; object-fit:contain;">
               </div>
             </a>
             <p>Outdoor yoga for all levels in Cypress, TX. Embrace nature, breathe deep, and connect with community every week on the deck.</p>
             <div class="social-row" aria-label="Social media">
-              <a href="https://www.facebook.com" class="social-btn" aria-label="JoyFull Yoga on Facebook" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.facebook.com" class="social-btn" aria-label="joyFULL Yoga on Facebook" target="_blank" rel="noopener noreferrer">
                 <img src="assets/FacebookICon.svg" alt="Facebook" width="18" height="18">
               </a>
-              <a href="https://www.instagram.com/joyfullyoga_cypress/" class="social-btn" aria-label="JoyFull Yoga on Instagram" target="_blank" rel="noopener noreferrer">
+              <a href="https://www.instagram.com/joyfullyoga_cypress/" class="social-btn" aria-label="joyFULL Yoga on Instagram" target="_blank" rel="noopener noreferrer">
                 <img src="assets/IGIcon.svg" alt="Instagram" width="18" height="18">
               </a>
             </div>
@@ -2241,12 +2401,12 @@
 
     <div class="container">
       <div class="footer-bottom">
-        <p class="footer-copy">&copy; 2025 JoyFull Yoga &middot; Cypress, TX &middot; All rights reserved.</p>
+        <p class="footer-copy">&copy; 2025 joy<strong>FULL</strong> Yoga &middot; Cypress, TX &middot; All rights reserved.</p>
 
-        <a href="#home" class="footer-seal" aria-label="JoyFull Yoga — scroll to top">
+        <a href="#home" class="footer-seal" aria-label="joyFULL Yoga — scroll to top">
           <div style="background:#ffffff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;line-height:0;width:72px;height:72px;">
             <img src="assets/Logo.png"
-                 alt="JoyFull Yoga"
+                 alt="joyFULL Yoga"
                  style="display:block; height:68px; width:68px; object-fit:contain;">
           </div>
         </a>
@@ -2453,6 +2613,59 @@
       touchX = e.touches[0].clientX;
     }, { passive: true });
     section.addEventListener('touchend', function (e) {
+      var dx = e.changedTouches[0].clientX - touchX;
+      if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); resetTimer(); }
+    }, { passive: true });
+  })();
+  </script>
+  <script>
+  (function () {
+    var slides = document.querySelectorAll('.tc-slide');
+    var dotsEl = document.getElementById('tc-dots');
+    var prevBtn = document.getElementById('tc-prev');
+    var nextBtn = document.getElementById('tc-next');
+    var current = 0;
+    var total = slides.length;
+    var timer;
+    var touchX = 0;
+
+    slides.forEach(function(_, i) {
+      var btn = document.createElement('button');
+      btn.className = 'tc-dot' + (i === 0 ? ' tc-dot-active' : '');
+      btn.setAttribute('role', 'tab');
+      btn.setAttribute('aria-label', 'Go to testimonial ' + (i + 1));
+      btn.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+      btn.addEventListener('click', function() { goTo(i); resetTimer(); });
+      dotsEl.appendChild(btn);
+    });
+
+    var dots = dotsEl.querySelectorAll('.tc-dot');
+
+    function goTo(n) {
+      slides[current].classList.remove('tc-active');
+      dots[current].classList.remove('tc-dot-active');
+      dots[current].setAttribute('aria-selected', 'false');
+      current = ((n % total) + total) % total;
+      slides[current].classList.add('tc-active');
+      dots[current].classList.add('tc-dot-active');
+      dots[current].setAttribute('aria-selected', 'true');
+    }
+
+    function next() { goTo(current + 1); }
+    function prev() { goTo(current - 1); }
+    function startTimer() { timer = setInterval(next, 5000); }
+    function resetTimer() { clearInterval(timer); startTimer(); }
+
+    prevBtn.addEventListener('click', function() { prev(); resetTimer(); });
+    nextBtn.addEventListener('click', function() { next(); resetTimer(); });
+
+    startTimer();
+
+    var carousel = document.getElementById('tc-carousel');
+    carousel.addEventListener('touchstart', function(e) {
+      touchX = e.touches[0].clientX;
+    }, { passive: true });
+    carousel.addEventListener('touchend', function(e) {
       var dx = e.changedTouches[0].clientX - touchX;
       if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); resetTimer(); }
     }, { passive: true });
