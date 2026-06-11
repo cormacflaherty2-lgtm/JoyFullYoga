@@ -1416,7 +1416,12 @@
     }
     #testimonials .eyebrow { color: var(--gold); }
     #testimonials .section-title { color: var(--white); }
-    #testimonials .section-sub   { color: rgba(255,255,255,0.6); }
+    #testimonials .section-sub {
+      font-style: italic;
+      color: var(--gold);
+      opacity: 0.85;
+      font-size: var(--fs-base);
+    }
 
     .tc-carousel {
       position: relative;
@@ -1436,6 +1441,11 @@
     .tc-card {
       text-align: center;
       padding: var(--sp-8) var(--sp-6);
+      min-height: 280px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
     .tc-quote-icon {
       font-family: var(--font-display);
@@ -1452,6 +1462,9 @@
       color: rgba(255,255,255,0.9);
       line-height: 1.65;
       margin: 0 0 var(--sp-6);
+    }
+    .tc-quote-lg {
+      font-size: clamp(1.4rem, 3vw, 1.65rem);
     }
     .tc-author {
       font-family: var(--font-body);
@@ -1506,6 +1519,8 @@
     @media (max-width: 600px) {
       .tc-carousel { padding: 0 var(--sp-8); }
       .tc-quote { font-size: var(--fs-lg); }
+      .tc-quote-lg { font-size: 1.35rem; }
+      .tc-card { min-height: 240px; }
     }
 
   </style>
@@ -2192,6 +2207,89 @@
       </div>
     </section>
 
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section id="testimonials" class="section-pad" aria-labelledby="testimonials-heading">
+      <div class="container">
+        <div class="section-header">
+          <p class="eyebrow">Stories of Joy</p>
+          <h2 class="section-title" id="testimonials-heading">Stories of Joy</h2>
+          <p class="section-sub">sweet messages from students</p>
+        </div>
+
+        <div class="tc-carousel" id="tc-carousel">
+
+          <div class="tc-slide tc-active">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">There are no better moments than pausing to take an early breath to remind yourself why you hustle, why you smile, and why you love. An early morning moment led by Chelsea was a perfect way to honor those things and myself so I can finish the week with a full heart. Her easy, grateful, and loving vibes are contagious! #invitingpeace</blockquote>
+              <cite class="tc-author">— Kate R.</cite>
+            </div>
+          </div>
+
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">I loved my class with Chelsea! The combination of slow yoga movements and calming affirmations made the class soothing to my body and soul. Chelsea will meet you where you are and accommodate the movements for your skill level. I will definitely be taking another class!</blockquote>
+              <cite class="tc-author">— Charissa B.</cite>
+            </div>
+          </div>
+
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote tc-quote-lg">You did such a great job! LOVE SUNRISE YOGA!!!</blockquote>
+              <cite class="tc-author">— Kristina B.</cite>
+            </div>
+          </div>
+
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">That was so beautiful! ...it felt like I was emerging from a 365 day cocoon. I'd love to come 1–2 days a week and start my morning with you! The Savasana and then opening eyes to sunrise was magic.</blockquote>
+              <cite class="tc-author">— Nikki M.</cite>
+            </div>
+          </div>
+
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote tc-quote-lg">It set the tone for an awesome day!!</blockquote>
+              <cite class="tc-author">— Sean J.</cite>
+            </div>
+          </div>
+
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">Sunrise Faith Flow was so good! A perfect way to start the morning. Everything from the music, to the ambiance, to the Bible verse, and of course the flow — was amazing. I will be back regularly!</blockquote>
+              <cite class="tc-author">— Kara K.</cite>
+            </div>
+          </div>
+
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote tc-quote-lg">joy<strong>FULL</strong> yoga doesn't feel like just a practice, it's an experience.</blockquote>
+              <cite class="tc-author">— Kyle E.</cite>
+            </div>
+          </div>
+
+          <div class="tc-slide">
+            <div class="tc-card">
+              <div class="tc-quote-icon" aria-hidden="true">"</div>
+              <blockquote class="tc-quote">I had such a wonderful experience with Chelsea! She is such a thoughtful and attentive instructor. I came with a sore knee, and she immediately helped me tailor the workout with modifications that kept me moving while protecting my injury. I left feeling stretched, strong, and so much better than when I walked in. Her calm energy and clear guidance made it easy to follow along, even as a beginner. I can't recommend her enough!</blockquote>
+              <cite class="tc-author">— Anonymous Student</cite>
+            </div>
+          </div>
+
+          <button class="tc-prev" id="tc-prev" aria-label="Previous testimonial">&#8249;</button>
+          <button class="tc-next" id="tc-next" aria-label="Next testimonial">&#8250;</button>
+          <div class="tc-dots" id="tc-dots" role="tablist" aria-label="Testimonial indicators"></div>
+
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ CONTACT ═══ -->
     <section id="contact" class="section-pad" aria-labelledby="contact-heading">
       <div class="container">
@@ -2292,56 +2390,6 @@
       </div>
     </section>
 
-    <!-- ═══ TESTIMONIALS ═══ -->
-    <section id="testimonials" class="section-pad" aria-labelledby="testimonials-heading">
-      <div class="container">
-        <div class="section-header">
-          <p class="eyebrow">What Students Are Saying</p>
-          <h2 class="section-title" id="testimonials-heading">What Students Are Saying</h2>
-          <p class="section-sub">joy<strong>FULL</strong> Yoga · Cypress, TX</p>
-        </div>
-
-        <div class="tc-carousel" id="tc-carousel">
-
-          <!-- ── To add a new testimonial: copy one tc-slide block below ── -->
-
-          <!-- Testimonial 1: Chelsea — founder statement -->
-          <div class="tc-slide tc-active">
-            <div class="tc-card">
-              <div class="tc-quote-icon" aria-hidden="true">"</div>
-              <blockquote class="tc-quote">JOYFULL YOGA is committed to providing enriching outdoor yoga experiences. With ten years of practice and a completed 200-hour teacher training, my passion is to inspire peace and mindfulness through yoga, meditation, and breathing techniques. Our world is busy and fast, so let's treat ourselves and our bodies to a reset with mindfulness and yoga.</blockquote>
-              <cite class="tc-author">— Chelsea, Founder &amp; Instructor</cite>
-            </div>
-          </div>
-
-          <!-- Testimonial 2: placeholder -->
-          <div class="tc-slide">
-            <div class="tc-card">
-              <div class="tc-quote-icon" aria-hidden="true">"</div>
-              <blockquote class="tc-quote">This class completely changed my mornings. Being outside on the deck makes every session feel like a retreat.</blockquote>
-              <cite class="tc-author">— Happy Student</cite>
-            </div>
-          </div>
-
-          <!-- Testimonial 3: placeholder -->
-          <div class="tc-slide">
-            <div class="tc-card">
-              <div class="tc-quote-icon" aria-hidden="true">"</div>
-              <blockquote class="tc-quote">Chelsea is an incredible instructor — so welcoming to beginners. I've never felt more at peace.</blockquote>
-              <cite class="tc-author">— Happy Student</cite>
-            </div>
-          </div>
-
-          <!-- Arrow navigation -->
-          <button class="tc-prev" id="tc-prev" aria-label="Previous testimonial">&#8249;</button>
-          <button class="tc-next" id="tc-next" aria-label="Next testimonial">&#8250;</button>
-
-          <!-- Dot indicators (built by JS) -->
-          <div class="tc-dots" id="tc-dots" role="tablist" aria-label="Testimonial indicators"></div>
-
-        </div>
-      </div>
-    </section>
 
   </main>
 
