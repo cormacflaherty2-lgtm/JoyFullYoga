@@ -863,6 +863,35 @@
 
     .mobile-bar .btn { flex: 1; }
 
+    /* ─── SQUARE BOOKING SECTION ──────────────────────────── */
+    .sq-booking-wrap {
+      text-align: center;
+      padding: var(--sp-12) 0 var(--sp-6);
+    }
+    .sq-booking-wrap p {
+      color: var(--muted);
+      font-size: var(--fs-base);
+      margin-bottom: var(--sp-6);
+    }
+    /* Style Square's injected button to match site */
+    a[href*="square.site/appointments"] {
+      background: var(--sage) !important;
+      color: var(--white) !important;
+      font-family: var(--font-body) !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      border-radius: var(--radius) !important;
+      padding: 14px 32px !important;
+      font-size: var(--fs-sm) !important;
+      text-decoration: none !important;
+      border: none !important;
+      cursor: pointer !important;
+    }
+    a[href*="square.site/appointments"]:hover {
+      background: var(--sage-dark) !important;
+    }
+
     /* ─── Focus ring ──────────────────────────────────────── */
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
@@ -1537,7 +1566,7 @@
     <a href="#events"  class="mobile-link">Events</a>
     <a href="#about"   class="mobile-link">About</a>
     <a href="#contact" class="mobile-link">Contact</a>
-    <a href="#booking" class="btn btn-gold mobile-book">Book a Class</a>
+    <button class="btn btn-gold mobile-book" onclick="openSquareBooking()">Book a Class</button>
   </div>
 
   <!-- ═══ HEADER / NAV ═══ -->
@@ -1559,14 +1588,14 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#classes">Classes</a></li>
             <li><a href="#events">Events</a></li>
-            <li><a href="#booking">Book</a></li>
+            <li><a href="javascript:void(0)" onclick="openSquareBooking()">Book</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
 
           <!-- Right group -->
           <div style="display:flex;align-items:center;gap:var(--sp-3);">
-            <a href="#booking" class="btn btn-gold nav-cta">Book a Class</a>
+            <button class="btn btn-gold nav-cta" onclick="openSquareBooking()">Book a Class</button>
             <button class="hamburger" id="menu-open"
                     aria-label="Open navigation"
                     aria-expanded="false"
@@ -1695,7 +1724,7 @@
               </div>
               <div class="class-price">$10</div>
               <div class="card-footer">
-                <a href="#booking" class="btn btn-gold btn-full">Book Now →</a>
+                <button class="btn btn-gold btn-full" onclick="openSquareBooking()">Book Now →</button>
               </div>
             </div>
           </article>
@@ -1729,7 +1758,7 @@
               </div>
               <div class="class-price">$10</div>
               <div class="card-footer">
-                <a href="#booking" class="btn btn-gold btn-full">Book Now →</a>
+                <button class="btn btn-gold btn-full" onclick="openSquareBooking()">Book Now →</button>
               </div>
             </div>
           </article>
@@ -1763,7 +1792,7 @@
               </div>
               <div class="class-price">$10</div>
               <div class="card-footer">
-                <a href="#booking" class="btn btn-gold btn-full">Book Now →</a>
+                <button class="btn btn-gold btn-full" onclick="openSquareBooking()">Book Now →</button>
               </div>
             </div>
           </article>
@@ -1869,213 +1898,12 @@
           <p class="section-sub">All levels welcome — just bring your mat. Classes fill up fast.</p>
         </div>
 
-        <!-- Filter tabs -->
-        <div class="booking-filter-row" role="group" aria-label="Filter classes">
-          <button class="booking-filter-btn active" data-filter="all">All Classes</button>
-          <button class="booking-filter-btn" data-filter="regular">Weekly</button>
-          <button class="booking-filter-btn" data-filter="special">Special Events</button>
-        </div>
-
-        <!-- Class cards grid -->
-        <div class="booking-grid" id="booking-grid">
-
-          <!-- Card 1: Special Event — Yoga + Soundbowls + Green Compass -->
-          <article class="bcard bcard-featured" data-type="special">
-            <div class="bcard-body">
-              <div class="bcard-top">
-                <span class="bcard-badge badge-special">Special Event</span>
-                <span class="bcard-price">FREE</span>
-              </div>
-              <h3 class="bcard-title">Yoga + Soundbowls + Green Compass</h3>
-              <div class="bcard-meta">
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Thursday, June 26 · 7:00 PM</span>
-                </div>
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Outdoor on the Deck · Cypress, TX</span>
-                </div>
-              </div>
-              <div class="bcard-divider"></div>
-            </div>
-            <div class="bcard-footer">
-              <button class="btn btn-gold"
-                      data-modal-title="Yoga + Soundbowls + Green Compass"
-                      data-modal-sub="Special Event"
-                      data-modal-date="Thursday, June 26 · 7:00 PM"
-                      data-modal-loc="Outdoor on the Deck · Cypress, TX"
-                      data-modal-price="FREE">
-                RSVP Now →
-              </button>
-            </div>
-            <div class="bcard-featured-panel" aria-hidden="true">
-              <div>
-                <div class="bcard-featured-day">26</div>
-                <div class="bcard-featured-month">June</div>
-              </div>
-              <div class="bcard-featured-time">7:00 PM</div>
-            </div>
-          </article>
-
-          <!-- Card 2: Workshop — June 28 -->
-          <article class="bcard bcard-featured" data-type="special">
-            <div class="bcard-body">
-              <div class="bcard-top">
-                <span class="bcard-badge badge-special">Workshop</span>
-                <span class="bcard-price">TBD</span>
-              </div>
-              <h3 class="bcard-title">Yoga: Poses &amp; Alignment Workshop</h3>
-              <div class="bcard-meta">
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Sunday, June 28 · 3:00–4:30 PM</span>
-                </div>
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Outdoor on the Deck · Cypress, TX</span>
-                </div>
-              </div>
-              <div class="bcard-divider"></div>
-            </div>
-            <div class="bcard-footer">
-              <a href="https://www.joyfullyoga-cypress.com" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
-                Register Here →
-              </a>
-            </div>
-            <div class="bcard-featured-panel" aria-hidden="true">
-              <div>
-                <div class="bcard-featured-day">28</div>
-                <div class="bcard-featured-month">June</div>
-              </div>
-              <div class="bcard-featured-time">3:00 PM</div>
-            </div>
-          </article>
-
-          <!-- Card 3: Workshop — July 12 -->
-          <article class="bcard bcard-featured" data-type="special">
-            <div class="bcard-body">
-              <div class="bcard-top">
-                <span class="bcard-badge badge-special">Workshop</span>
-                <span class="bcard-price">TBD</span>
-              </div>
-              <h3 class="bcard-title">Yoga: Poses &amp; Alignment Workshop</h3>
-              <div class="bcard-meta">
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Sunday, July 12 · 3:00–4:30 PM</span>
-                </div>
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Outdoor on the Deck · Cypress, TX</span>
-                </div>
-              </div>
-              <div class="bcard-divider"></div>
-            </div>
-            <div class="bcard-footer">
-              <a href="https://www.joyfullyoga-cypress.com" target="_blank" rel="noopener noreferrer" class="btn btn-gold">
-                Register Here →
-              </a>
-            </div>
-            <div class="bcard-featured-panel" aria-hidden="true">
-              <div>
-                <div class="bcard-featured-day">12</div>
-                <div class="bcard-featured-month">July</div>
-              </div>
-              <div class="bcard-featured-time">3:00 PM</div>
-            </div>
-          </article>
-
-          <!-- Card 3: Weekly — Tue & Thu -->
-          <article class="bcard" data-type="regular">
-            <div class="bcard-body">
-              <div class="bcard-top">
-                <span class="bcard-badge badge-weekly">Weekly</span>
-                <span class="bcard-price">$10</span>
-              </div>
-              <h3 class="bcard-title">Vinyasa Flow &amp; Mindfulness</h3>
-              <div class="bcard-meta">
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Tuesday &amp; Thursday</span>
-                </div>
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  <span>9:30 AM · 45 min</span>
-                </div>
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Outdoor Deck · Cypress, TX</span>
-                </div>
-              </div>
-              <div class="bcard-divider"></div>
-            </div>
-            <div class="bcard-footer">
-              <button class="btn btn-gold"
-                      data-modal-title="Vinyasa Flow &amp; Mindfulness"
-                      data-modal-sub=""
-                      data-modal-date="Tuesday &amp; Thursday · 9:30 AM"
-                      data-modal-loc="Outdoor Deck · Cypress, TX"
-                      data-modal-price="$10">
-                Book Now →
-              </button>
-            </div>
-          </article>
-
-          <!-- Card 3: Weekly — Friday -->
-          <article class="bcard" data-type="regular">
-            <div class="bcard-body">
-              <div class="bcard-top">
-                <span class="bcard-badge badge-weekly">Weekly</span>
-                <span class="bcard-price">$10</span>
-              </div>
-              <h3 class="bcard-title">Vinyasa Flow &amp; Mindfulness</h3>
-              <div class="bcard-meta">
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                  <span>Every Friday</span>
-                </div>
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                  <span>12:00 PM · 45 min</span>
-                </div>
-                <div class="bcard-meta-row">
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                  <span>Outdoor Deck · Cypress, TX</span>
-                </div>
-              </div>
-              <div class="bcard-divider"></div>
-            </div>
-            <div class="bcard-footer">
-              <button class="btn btn-gold"
-                      data-modal-title="Vinyasa Flow &amp; Mindfulness"
-                      data-modal-sub=""
-                      data-modal-date="Every Friday · 12:00 PM"
-                      data-modal-loc="Outdoor Deck · Cypress, TX"
-                      data-modal-price="$10">
-                Book Now →
-              </button>
-            </div>
-          </article>
-
-        </div><!-- /booking-grid -->
-
-        <!-- ═══════════════════════════════════════
-             WIX BOOKING EMBED — Replace cards above
-             with this block once Chelsea provides
-             her Wix embed code.
-
-             To get embed code:
-             Wix Dashboard → Bookings →
-             Website Widgets → Service List →
-             Embed → Copy Code
-
-             Then paste it inside this div and
-             remove the class-card grid above.
-        ═══════════════════════════════════════ -->
-        <div id="wix-booking-embed"
-             style="display:none; width:100%; max-width:800px; margin:0 auto;">
-          <!-- PASTE WIX EMBED CODE HERE -->
+        <!-- Square Appointments Booking Widget -->
+        <div class="sq-booking-wrap">
+          <p>Choose your class and reserve your spot — powered by Square Appointments</p>
+          <!-- Start Square Appointments Embed Code -->
+          <script src='https://square.site/appointments/buyer/widget/o3145poitz2zx0/LCYRFQ8QNK5SC.js'></script>
+          <!-- End Square Appointments Embed Code -->
         </div>
 
         <!-- Info strip -->
@@ -2468,7 +2296,7 @@
               <li><a href="#classes">Slow Flow Yoga</a></li>
               <li><a href="#classes">Vinyasa Flow</a></li>
               <li><a href="#events">Special Events</a></li>
-              <li><a href="#booking">Book a Class</a></li>
+              <li><a href="javascript:void(0)" onclick="openSquareBooking()">Book a Class</a></li>
             </ul>
           </div>
 
@@ -2528,7 +2356,7 @@
   <!-- ═══ MOBILE FLOATING BAR ═══ -->
   <div class="mobile-bar" role="complementary" aria-label="Quick contact">
     <a href="tel:2817443202" class="btn btn-outline-white">&#128222; Call / Text</a>
-    <a href="#booking"       class="btn btn-gold">&#129336; Book a Class</a>
+    <button class="btn btn-gold" onclick="openSquareBooking()">&#129336; Book a Class</button>
   </div>
 
   <!-- ═══ JAVASCRIPT ═══ -->
@@ -2770,6 +2598,20 @@
       if (Math.abs(dx) > 40) { goTo(dx < 0 ? current + 1 : current - 1); resetTimer(); }
     }, { passive: true });
   })();
+  </script>
+
+  <!-- ═══ SQUARE APPOINTMENTS ═══ -->
+  <script>
+  function openSquareBooking() {
+    // Find Square's injected booking anchor and trigger it
+    var squareBtn = document.querySelector('a[href*="square.site/appointments"]');
+    if (squareBtn) {
+      squareBtn.click();
+    } else {
+      // Fallback: open Square booking page directly
+      window.open('https://square.site/appointments/buyer/widget/o3145poitz2zx0/LCYRFQ8QNK5SC', '_blank');
+    }
+  }
   </script>
 </body>
 </html>
