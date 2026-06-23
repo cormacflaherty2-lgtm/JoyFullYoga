@@ -872,35 +872,6 @@
 
     .mobile-bar .btn { flex: 1; }
 
-    /* ─── SQUARE BOOKING SECTION ──────────────────────────── */
-    .sq-booking-wrap {
-      text-align: center;
-      padding: var(--sp-12) 0 var(--sp-6);
-    }
-    .sq-booking-wrap p {
-      color: var(--muted);
-      font-size: var(--fs-base);
-      margin-bottom: var(--sp-6);
-    }
-    /* Style Square's injected button to match site */
-    a[href*="square.site/appointments"] {
-      background: var(--sage) !important;
-      color: var(--white) !important;
-      font-family: var(--font-body) !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.08em !important;
-      text-transform: uppercase !important;
-      border-radius: var(--radius) !important;
-      padding: 14px 32px !important;
-      font-size: var(--fs-sm) !important;
-      text-decoration: none !important;
-      border: none !important;
-      cursor: pointer !important;
-    }
-    a[href*="square.site/appointments"]:hover {
-      background: var(--sage-dark) !important;
-    }
-
     /* ─── Focus ring ──────────────────────────────────────── */
     :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
 
@@ -1575,7 +1546,7 @@
     <a href="#events"  class="mobile-link">Events</a>
     <a href="#about"   class="mobile-link">About</a>
     <a href="#contact" class="mobile-link">Contact</a>
-    <a href="#square-booking" class="btn btn-gold mobile-book">Book a Class</a>
+    <button id="Anywhere_button_iframe_mobile" class="anywhere-book-now-button btn btn-gold mobile-book" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book a Class</button>
   </div>
 
   <!-- ═══ HEADER / NAV ═══ -->
@@ -1597,14 +1568,14 @@
             <li><a href="#home">Home</a></li>
             <li><a href="#classes">Classes</a></li>
             <li><a href="#events">Events</a></li>
-            <li><a href="#square-booking">Book</a></li>
+            <li><a href="#setmore-booking">Book</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
           </ul>
 
           <!-- Right group -->
           <div style="display:flex;align-items:center;gap:var(--sp-3);">
-            <a href="#square-booking" class="btn btn-gold nav-cta">Book a Class</a>
+            <button id="Anywhere_button_iframe_nav" class="anywhere-book-now-button btn btn-gold nav-cta" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book a Class</button>
             <button class="hamburger" id="menu-open"
                     aria-label="Open navigation"
                     aria-expanded="false"
@@ -1733,7 +1704,7 @@
               </div>
               <div class="class-price">$15</div>
               <div class="card-footer">
-                <a href="#square-booking" class="btn btn-gold btn-full">Book Now →</a>
+                <button class="anywhere-book-now-button btn btn-gold btn-full" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book Now →</button>
               </div>
             </div>
           </article>
@@ -1767,7 +1738,7 @@
               </div>
               <div class="class-price">$15</div>
               <div class="card-footer">
-                <a href="#square-booking" class="btn btn-gold btn-full">Book Now →</a>
+                <button class="anywhere-book-now-button btn btn-gold btn-full" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book Now →</button>
               </div>
             </div>
           </article>
@@ -1801,7 +1772,7 @@
               </div>
               <div class="class-price">$15</div>
               <div class="card-footer">
-                <a href="#square-booking" class="btn btn-gold btn-full">Book Now →</a>
+                <button class="anywhere-book-now-button btn btn-gold btn-full" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book Now →</button>
               </div>
             </div>
           </article>
@@ -1845,7 +1816,7 @@
               </li>
             </ul>
 
-            <a href="#square-booking" class="btn btn-gold">Register Here →</a>
+            <button class="anywhere-book-now-button btn btn-gold" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Register Here →</button>
           </div>
           <div class="event-flyer-wrap">
             <object
@@ -1925,7 +1896,7 @@
           <div class="booking-info-item">
             <span class="booking-info-icon">📅</span>
             <p class="booking-info-title"><strong>Book Your Class</strong></p>
-            <p class="booking-info-desc">Book your class using Square below</p>
+            <p class="booking-info-desc">Book your class online below</p>
           </div>
           <div class="booking-info-item">
             <span class="booking-info-icon">📞</span>
@@ -1934,16 +1905,21 @@
           </div>
         </div>
 
-        <!-- ─── Square Booking Widget ─── -->
-        <div id="square-booking" style="border-top: 1px solid var(--divider); margin-top: var(--sp-16); padding-top: var(--sp-12); text-align: center;">
+        <!-- ─── Setmore Booking Widget ─── -->
+        <div id="setmore-booking" style="border-top: 1px solid var(--divider); margin-top: var(--sp-16); padding-top: var(--sp-12); text-align: center;">
           <div class="section-header" style="margin-bottom: var(--sp-8);">
             <h3 style="font-family: var(--font-display); font-size: var(--fs-3xl); font-weight: 400; color: var(--text); margin-bottom: var(--sp-2);">Reserve Your Spot</h3>
-            <p style="font-family: var(--font-body); font-size: var(--fs-sm); color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">Choose a class below to book with Square</p>
+            <p style="font-family: var(--font-body); font-size: var(--fs-sm); color: var(--gold); letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600;">Secure online booking</p>
           </div>
-          <div style="max-width: 800px; margin: 0 auto;">
-            <!-- Start Square Appointments Embed Code -->
-            <script src='https://square.site/appointments/buyer/widget/o3145poitz2zx0/LCYRFQ8QNK5SC.js'></script>
-            <!-- End Square Appointments Embed Code -->
+          <div style="width:100%; min-height:550px; max-width:800px; margin:0 auto;">
+            <iframe
+              src="https://booking.setmore.com/scheduleappt/iframe/joyfullyoga"
+              width="100%"
+              height="550"
+              frameborder="0"
+              scrolling="yes"
+              style="border:none; border-radius:8px;">
+            </iframe>
           </div>
         </div>
 
@@ -2313,7 +2289,7 @@
               <li><a href="#classes">Slow Flow Yoga</a></li>
               <li><a href="#classes">Vinyasa Flow</a></li>
               <li><a href="#events">Special Events</a></li>
-              <li><a href="#square-booking">Book a Class</a></li>
+              <li><a href="#setmore-booking">Book a Class</a></li>
             </ul>
           </div>
 
@@ -2373,7 +2349,7 @@
   <!-- ═══ MOBILE FLOATING BAR ═══ -->
   <div class="mobile-bar" role="complementary" aria-label="Quick contact">
     <a href="tel:2817443202" class="btn btn-outline-white">&#128222; Call / Text</a>
-    <a href="#square-booking" class="btn btn-gold">&#129336; Book a Class</a>
+    <button class="anywhere-book-now-button btn btn-gold" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">🧘 Book a Class</button>
   </div>
 
   <!-- ═══ JAVASCRIPT ═══ -->
@@ -2617,18 +2593,7 @@
   })();
   </script>
 
-  <!-- ═══ SQUARE APPOINTMENTS ═══ -->
-  <script>
-  function openSquareBooking() {
-    // Find Square's injected booking anchor and trigger it
-    var squareBtn = document.querySelector('a[href*="square.site/appointments"]');
-    if (squareBtn) {
-      squareBtn.click();
-    } else {
-      // Fallback: open Square booking page directly
-      window.open('https://square.site/appointments/buyer/widget/o3145poitz2zx0/LCYRFQ8QNK5SC', '_blank');
-    }
-  }
-  </script>
+  <!-- ═══ SETMORE BOOKING ═══ -->
+  <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
 </body>
 </html>
