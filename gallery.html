@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery — JOYFULL YOGA | Cypress, TX</title>
+  <meta name="description" content="Browse photos from JOYFULL YOGA classes and events in Cypress, TX. Outdoor yoga on the deck for all levels.">
+  <meta name="theme-color" content="#3D6B47">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    /* ─── Custom Properties ───────────────────────────────── */
+    :root {
+      --sage:         #3D6B47;
+      --sage-dark:    #2C5235;
+      --sage-light:   #EEF4EF;
+      --gold:         #C9A96E;
+      --gold-hover:   #B8965C;
+      --cream:        #FAF7F2;
+      --white:        #FFFFFF;
+      --text:         #1C2B1E;
+      --muted:        #5E7462;
+      --divider:      rgba(61,107,71,0.12);
+
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body:    'Inter', sans-serif;
+
+      --sp-2:  0.5rem;
+      --sp-3:  0.75rem;
+      --sp-4:  1rem;
+      --sp-6:  1.5rem;
+      --sp-8:  2rem;
+      --sp-10: 2.5rem;
+      --sp-12: 3rem;
+      --sp-16: 4rem;
+      --sp-20: 5rem;
+
+      --fs-xs:   clamp(0.72rem,  1.2vw,  0.8rem);
+      --fs-sm:   clamp(0.8rem,   1.5vw,  0.875rem);
+      --fs-base: clamp(0.9rem,   1.8vw,  1rem);
+      --fs-lg:   clamp(1rem,     2vw,    1.125rem);
+      --fs-2xl:  clamp(1.25rem,  3vw,    1.5rem);
+      --fs-3xl:  clamp(1.5rem,   4vw,    2rem);
+      --fs-4xl:  clamp(1.9rem,   5vw,    2.5rem);
+      --fs-5xl:  clamp(2.4rem,   6.5vw,  3.5rem);
+
+      --nav-h:  150px;
+      --radius: 10px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; scroll-padding-top: var(--nav-h); }
+
+    body {
+      font-family: var(--font-body);
+      font-size: var(--fs-base);
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.65;
+      overflow-x: hidden;
+    }
+
+    img { max-width: 100%; display: block; }
+    a   { text-decoration: none; color: inherit; }
+    ul  { list-style: none; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+    h1, h2, h3 { font-family: var(--font-display); line-height: 1.15; }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--sp-6);
+    }
+
+    /* ─── Buttons ─────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-2);
+      padding: var(--sp-3) var(--sp-6);
+      border-radius: 5px;
+      font-family: var(--font-body);
+      font-size: var(--fs-sm);
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: background 0.2s ease, box-shadow 0.2s ease;
+      min-height: 44px;
+      white-space: nowrap;
+    }
+    .btn-gold {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .btn-gold:hover { background: var(--gold-hover); box-shadow: 0 4px 14px rgba(201,169,110,0.35); }
+
+    /* ─── NAV ─────────────────────────────────────────────── */
+    #main-nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(250,247,242,0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: 0 1px 0 var(--divider), 0 2px 16px rgba(28,43,30,0.06);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: var(--nav-h);
+      gap: var(--sp-4);
+    }
+
+    @media (max-width: 767px) {
+      :root { --nav-h: 80px; }
+      #main-nav a img { height: 64px !important; }
+    }
+
+    .nav-links {
+      display: none;
+      align-items: center;
+      gap: var(--sp-8);
+    }
+
+    .nav-links a {
+      font-size: var(--fs-sm);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+      padding: var(--sp-2) 0;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      width: 0; height: 1.5px;
+      background: var(--gold);
+      transition: width 0.25s ease;
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a[aria-current="page"]::after { width: 100%; }
+    .nav-links a:hover,
+    .nav-links a[aria-current="page"] { color: var(--sage); }
+
+    .nav-cta { display: none; }
+
+    @media (min-width: 900px) {
+      .nav-links { display: flex; }
+      .nav-cta   { display: inline-flex; }
+    }
+
+    .hamburger {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      padding: var(--sp-2);
+    }
+    .hamburger span {
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--text);
+      border-radius: 2px;
+      transition: background 0.3s;
+    }
+
+    @media (min-width: 900px) { .hamburger { display: none; } }
+
+    /* Mobile overlay */
+    #mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1100;
+      background: var(--sage);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+    }
+    #mobile-menu.open { display: flex; }
+
+    #mobile-menu a.mobile-link {
+      font-family: var(--font-display);
+      font-size: clamp(1.9rem,5vw,2.5rem);
+      font-weight: 700;
+      color: var(--white);
+      min-height: 44px;
+      display: flex;
+      align-items: center;
+      transition: color 0.2s;
+    }
+    #mobile-menu a.mobile-link:hover { color: var(--gold); }
+
+    .mobile-close {
+      position: absolute;
+      top: 1.5rem; right: 1.5rem;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      color: rgba(255,255,255,0.8);
+      border-radius: 6px;
+    }
+    .mobile-close:hover { color: var(--white); background: rgba(255,255,255,0.1); }
+
+    .mobile-book {
+      margin-top: 1rem;
+      background: var(--gold);
+      color: var(--white);
+      border-radius: 5px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      font-size: var(--fs-sm);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    /* ─── PAGE HERO ───────────────────────────────────────── */
+    .gallery-hero {
+      padding-top: calc(var(--nav-h) + 3rem);
+      padding-bottom: 2rem;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .gallery-hero .eyebrow {
+      font-family: var(--font-body);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--sage);
+      margin-bottom: 0.75rem;
+    }
+
+    .gallery-hero h1 {
+      font-size: var(--fs-5xl);
+      font-weight: 400;
+      color: var(--text);
+      margin-bottom: 0.75rem;
+    }
+
+    .gallery-hero p {
+      font-size: var(--fs-lg);
+      color: var(--muted);
+      max-width: 520px;
+      margin: 0 auto 2rem;
+      line-height: 1.75;
+    }
+
+    /* ─── FILTER TABS ─────────────────────────────────────── */
+    .gallery-filters {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0 var(--sp-6) var(--sp-8);
+    }
+
+    .gf-btn {
+      font-family: var(--font-body);
+      font-size: var(--fs-xs);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      border: 1.5px solid var(--divider);
+      color: var(--muted);
+      background: var(--white);
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+
+    .gf-btn:hover,
+    .gf-btn.active {
+      background: var(--sage);
+      border-color: var(--sage);
+      color: var(--white);
+    }
+
+    /* ─── GALLERY GRID ────────────────────────────────────── */
+    .gallery-section {
+      padding-bottom: var(--sp-20);
+    }
+
+    .gallery-group {
+      margin-bottom: var(--sp-16);
+    }
+
+    .gallery-group-label {
+      font-family: var(--font-body);
+      font-size: var(--fs-xs);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: var(--sp-6);
+      padding-bottom: var(--sp-3);
+      border-bottom: 1px solid var(--divider);
+    }
+
+    .gallery-grid {
+      columns: 1;
+      column-gap: 1rem;
+    }
+
+    @media (min-width: 560px) { .gallery-grid { columns: 2; } }
+    @media (min-width: 900px) { .gallery-grid { columns: 3; } }
+    @media (min-width: 1100px) { .gallery-grid { columns: 4; } }
+
+    .gallery-item {
+      break-inside: avoid;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      background: var(--white);
+      box-shadow: 0 1px 4px rgba(28,43,30,0.06);
+      transition: box-shadow 0.25s ease, transform 0.25s ease;
+      cursor: pointer;
+    }
+
+    .gallery-item:hover {
+      box-shadow: 0 8px 28px rgba(28,43,30,0.12);
+      transform: translateY(-2px);
+    }
+
+    .gallery-item:focus-within {
+      outline: 2px solid var(--gold);
+      outline-offset: 2px;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .gallery-item:hover img { transform: scale(1.02); }
+
+    .gallery-caption {
+      padding: 0.6rem 0.9rem 0.75rem;
+      font-size: var(--fs-xs);
+      color: var(--muted);
+      font-weight: 500;
+      letter-spacing: 0.04em;
+    }
+
+    /* ─── LIGHTBOX ────────────────────────────────────────── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      background: rgba(28,43,30,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: var(--sp-6);
+    }
+
+    #lightbox.open { display: flex; }
+
+    .lb-inner {
+      position: relative;
+      max-width: 960px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #lb-img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 10px;
+      display: block;
+    }
+
+    #lb-caption {
+      margin-top: 0.75rem;
+      color: rgba(255,255,255,0.75);
+      font-size: var(--fs-sm);
+      text-align: center;
+      font-family: var(--font-body);
+    }
+
+    .lb-close {
+      position: absolute;
+      top: -2.5rem; right: 0;
+      color: rgba(255,255,255,0.8);
+      font-size: 1.5rem;
+      line-height: 1;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%;
+      transition: background 0.2s;
+    }
+    .lb-close:hover { background: rgba(255,255,255,0.15); color: white; }
+
+    .lb-prev, .lb-next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,0.12);
+      border: none;
+      color: white;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+      z-index: 10;
+    }
+    .lb-prev { left: -3.5rem; }
+    .lb-next { right: -3.5rem; }
+    .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.25); }
+
+    @media (max-width: 600px) {
+      .lb-prev { left: 0; }
+      .lb-next { right: 0; }
+    }
+
+    /* ─── CTA STRIP ───────────────────────────────────────── */
+    .gallery-cta {
+      background: var(--sage);
+      padding: var(--sp-16) var(--sp-6);
+      text-align: center;
+      color: var(--white);
+    }
+
+    .gallery-cta h2 {
+      font-size: var(--fs-4xl);
+      font-weight: 400;
+      margin-bottom: 0.75rem;
+    }
+
+    .gallery-cta p {
+      font-size: var(--fs-lg);
+      opacity: 0.82;
+      margin-bottom: var(--sp-8);
+      max-width: 480px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* ─── FOOTER ──────────────────────────────────────────── */
+    footer {
+      background: var(--text);
+      color: rgba(255,255,255,0.65);
+      padding: var(--sp-10) 0 var(--sp-6);
+      font-size: var(--fs-sm);
+      text-align: center;
+    }
+
+    footer .footer-brand {
+      font-family: var(--font-display);
+      font-size: var(--fs-2xl);
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    footer p { margin-bottom: 0.35rem; }
+    footer a { color: var(--gold); }
+    footer a:hover { text-decoration: underline; }
+
+    .footer-copy {
+      margin-top: var(--sp-8);
+      padding-top: var(--sp-6);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      font-size: var(--fs-xs);
+      opacity: 0.55;
+    }
+
+    :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ MOBILE MENU ═══ -->
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Site navigation">
+    <button class="mobile-close" id="menu-close" aria-label="Close navigation">
+      <i data-lucide="x" width="26" height="26"></i>
+    </button>
+    <a href="index.html#home"    class="mobile-link">Home</a>
+    <a href="index.html#classes" class="mobile-link">Classes</a>
+    <a href="index.html#events"  class="mobile-link">Events</a>
+    <a href="gallery.html"       class="mobile-link" aria-current="page">Gallery</a>
+    <a href="index.html#about"   class="mobile-link">About</a>
+    <a href="index.html#contact" class="mobile-link">Contact</a>
+    <button class="anywhere-book-now-button mobile-book" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book a Class</button>
+  </div>
+
+  <!-- ═══ NAV ═══ -->
+  <header>
+    <nav id="main-nav" role="navigation" aria-label="Main navigation">
+      <div class="container">
+        <div class="nav-inner">
+
+          <a href="index.html" aria-label="JOYFULL YOGA — home" style="display:inline-flex;align-items:center;line-height:0;">
+            <div style="background:#ffffff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;line-height:0;width:72px;height:72px;">
+              <img src="assets/Logo.png" alt="JOYFULL YOGA" style="display:block;height:68px;width:68px;object-fit:contain;">
+            </div>
+          </a>
+
+          <ul class="nav-links" role="list">
+            <li><a href="index.html#home">Home</a></li>
+            <li><a href="index.html#classes">Classes</a></li>
+            <li><a href="index.html#events">Events</a></li>
+            <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <button class="anywhere-book-now-button btn btn-gold nav-cta" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book a Class</button>
+            <button class="hamburger" id="menu-open" aria-label="Open navigation" aria-expanded="false" aria-controls="mobile-menu">
+              <span></span><span></span><span></span>
+            </button>
+          </div>
+
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ═══ PAGE HERO ═══ -->
+    <section class="gallery-hero">
+      <div class="container">
+        <p class="eyebrow">JOYFULL YOGA · Cypress, TX</p>
+        <h1>Photo Gallery</h1>
+        <p>A look inside our outdoor classes, special events, and the community we're building — one breath at a time.</p>
+      </div>
+    </section>
+
+    <!-- ═══ GALLERY ═══ -->
+    <section class="gallery-section" aria-label="Photo gallery">
+      <div class="container">
+
+        <!-- Group: Classes on the Deck -->
+        <div class="gallery-group" data-group="classes">
+          <p class="gallery-group-label">Classes on the Deck</p>
+          <div class="gallery-grid">
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_GroupClass2.JPG" data-caption="Group yoga class on the outdoor deck">
+              <img src="Yoga_GroupClass2.JPG" alt="Outdoor group yoga class on the deck in Cypress, TX" width="800" height="533" loading="eager">
+              <p class="gallery-caption">Group Class · Outdoor Deck</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_GroupClass1.JPG" data-caption="Group class — all levels welcome">
+              <img src="Yoga_GroupClass1.JPG" alt="All-levels group yoga class outdoors in Cypress" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">All Levels Welcome</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_GroupClass3.JPG" data-caption="Group flow session on the deck">
+              <img src="Yoga_GroupClass3.JPG" alt="Group flow yoga session on the outdoor deck" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Flow Session</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_GroupClass5.JPG" data-caption="Community yoga — Cypress, TX">
+              <img src="Yoga_GroupClass5.JPG" alt="Community yoga class outdoors in Cypress, TX" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Community Class</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Group-Class.png" data-caption="Yoga class on the deck">
+              <img src="Group-Class.png" alt="Yoga class gathered on the outdoor deck" width="800" height="600" loading="lazy">
+              <p class="gallery-caption">On the Deck</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_WomenClass1.JPEG" data-caption="Women's yoga class">
+              <img src="Yoga_WomenClass1.JPEG" alt="Women's yoga class on the outdoor deck" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Women's Class</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_WomenClass2.JPEG" data-caption="Women's flow class">
+              <img src="Yoga_WomenClass2.JPEG" alt="Women's flow yoga class in Cypress, TX" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Women's Flow</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Group: Solo Practice -->
+        <div class="gallery-group" data-group="solo">
+          <p class="gallery-group-label">Solo Practice</p>
+          <div class="gallery-grid">
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_Solo1.JPG" data-caption="Solo yoga practice on the deck">
+              <img src="Yoga_Solo1.JPG" alt="Solo yoga practice on the outdoor deck" width="800" height="1067" loading="lazy">
+              <p class="gallery-caption">Solo Practice</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_SoloStretch.jpg" data-caption="Stretching and breathwork">
+              <img src="Yoga_SoloStretch.jpg" alt="Yoga stretching and breathwork outdoors" width="800" height="1067" loading="lazy">
+              <p class="gallery-caption">Breathwork &amp; Stretch</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Solo.jpeg" data-caption="Mindful solo practice">
+              <img src="Solo.jpeg" alt="Mindful solo yoga practice" width="800" height="1067" loading="lazy">
+              <p class="gallery-caption">Mindful Practice</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Stretch.jpeg" data-caption="Deep stretch pose">
+              <img src="Stretch.jpeg" alt="Deep stretch yoga pose" width="800" height="1067" loading="lazy">
+              <p class="gallery-caption">Deep Stretch</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="SunsetYoga.jpeg" data-caption="Sunset yoga session">
+              <img src="SunsetYoga.jpeg" alt="Yoga practice at sunset outdoors" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Sunset Session</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga-SoloStretch.JPG" data-caption="Chelsea demonstrating a pose">
+              <img src="Yoga-SoloStretch.JPG" alt="Chelsea demonstrating a yoga stretch pose" width="800" height="1067" loading="lazy">
+              <p class="gallery-caption">Pose Demonstration</p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Group: Special Moments -->
+        <div class="gallery-group" data-group="special">
+          <p class="gallery-group-label">Special Moments</p>
+          <div class="gallery-grid">
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_Mother.JPG" data-caption="Mother's Day yoga class">
+              <img src="Yoga_Mother.JPG" alt="Mother's Day yoga class on the outdoor deck" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Mother's Day Class</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="MotherDay.jpeg" data-caption="Celebrating Mother's Day with yoga">
+              <img src="MotherDay.jpeg" alt="Celebrating Mother's Day with yoga outdoors" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Mother's Day</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_KidsClass1.JPG" data-caption="Kids yoga class">
+              <img src="Yoga_KidsClass1.JPG" alt="Kids yoga class outdoors in Cypress, TX" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Kids Yoga</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_KidsClass2.JPG" data-caption="Children learning yoga poses">
+              <img src="Yoga_KidsClass2.JPG" alt="Children learning yoga poses outdoors" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Kids Learning Poses</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_KidsClass3.JPG" data-caption="Fun yoga for kids">
+              <img src="Yoga_KidsClass3.JPG" alt="Fun outdoor yoga class for kids in Cypress" width="800" height="533" loading="lazy">
+              <p class="gallery-caption">Fun &amp; Playful Flow</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Photographic Yoga Class Meditation Center Instagram Post.png" data-caption="Sunrise Yoga at the Veteran Memorial Boat Dock">
+              <img src="Photographic Yoga Class Meditation Center Instagram Post.png" alt="Sunrise yoga at the Veteran Memorial Boat Dock, Cypress TX" width="800" height="800" loading="lazy">
+              <p class="gallery-caption">Sunrise Yoga · Boat Dock</p>
+            </div>
+
+            <div class="gallery-item" tabindex="0" data-src="Yoga_Solo3.JPG" data-caption="Peaceful outdoor yoga moment">
+              <img src="Yoga_Solo3.JPG" alt="Peaceful outdoor yoga practice moment" width="800" height="1067" loading="lazy">
+              <p class="gallery-caption">Peaceful Moment</p>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="gallery-cta">
+      <h2>Ready to Join Us?</h2>
+      <p>All levels welcome — just bring your mat and an open mind.</p>
+      <button class="anywhere-book-now-button btn" style="background:var(--gold);color:var(--white);" data-booking-url="https://joyfullyoga.setmore.com" data-new-tab="false">Book a Class →</button>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer>
+    <div class="container">
+      <p class="footer-brand">JOYFULL YOGA</p>
+      <p>Cypress, TX · Outdoor Yoga on the Deck</p>
+      <p>Text Chelsea: <a href="tel:2817443202">281-744-3202</a></p>
+      <p class="footer-copy">© 2025 JOYFULL YOGA · Embrace Nature, Breathe, Connect.</p>
+    </div>
+  </footer>
+
+  <!-- ═══ LIGHTBOX ═══ -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+    <div class="lb-inner">
+      <button class="lb-close" id="lb-close" aria-label="Close image viewer">
+        <i data-lucide="x" width="22" height="22"></i>
+      </button>
+      <button class="lb-prev" id="lb-prev" aria-label="Previous image">
+        <i data-lucide="chevron-left" width="22" height="22"></i>
+      </button>
+      <img id="lb-img" src="" alt="">
+      <button class="lb-next" id="lb-next" aria-label="Next image">
+        <i data-lucide="chevron-right" width="22" height="22"></i>
+      </button>
+      <p id="lb-caption"></p>
+    </div>
+  </div>
+
+  <!-- ═══ JAVASCRIPT ═══ -->
+  <script>
+    lucide.createIcons();
+
+    // Mobile menu
+    const mobileMenu = document.getElementById('mobile-menu');
+    document.getElementById('menu-open').addEventListener('click', () => {
+      mobileMenu.classList.add('open');
+      document.getElementById('menu-open').setAttribute('aria-expanded', 'true');
+    });
+    document.getElementById('menu-close').addEventListener('click', () => {
+      mobileMenu.classList.remove('open');
+      document.getElementById('menu-open').setAttribute('aria-expanded', 'false');
+    });
+
+    // Lightbox
+    const lightbox  = document.getElementById('lightbox');
+    const lbImg     = document.getElementById('lb-img');
+    const lbCaption = document.getElementById('lb-caption');
+    const items     = Array.from(document.querySelectorAll('.gallery-item'));
+    let current     = 0;
+
+    function openLightbox(index) {
+      current = index;
+      const item = items[index];
+      lbImg.src        = item.dataset.src;
+      lbImg.alt        = item.querySelector('img').alt;
+      lbCaption.textContent = item.dataset.caption || '';
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('lb-close').focus();
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+      items[current].focus();
+    }
+
+    function goPrev() { openLightbox((current - 1 + items.length) % items.length); }
+    function goNext() { openLightbox((current + 1) % items.length); }
+
+    items.forEach((item, i) => {
+      item.addEventListener('click', () => openLightbox(i));
+      item.addEventListener('keydown', e => {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(i); }
+      });
+    });
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', goPrev);
+    document.getElementById('lb-next').addEventListener('click', goNext);
+
+    lightbox.addEventListener('click', e => { if (e.target === lightbox) closeLightbox(); });
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  goPrev();
+      if (e.key === 'ArrowRight') goNext();
+    });
+
+    // Touch swipe for lightbox
+    let tsX = 0;
+    lightbox.addEventListener('touchstart', e => { tsX = e.touches[0].clientX; }, { passive: true });
+    lightbox.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - tsX;
+      if (Math.abs(dx) > 50) { dx < 0 ? goNext() : goPrev(); }
+    }, { passive: true });
+  </script>
+
+  <!-- Setmore -->
+  <script id="anywhere_book_now_script" src="https://assets.setmore.com/integration/book-now/live/v1/anywhere-book-now.js"></script>
+
+</body>
+</html>
