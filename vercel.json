@@ -1,0 +1,26 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/classes",            "destination": "/#classes",         "permanent": true },
+    { "source": "/yoga-classes",       "destination": "/#classes",         "permanent": true },
+    { "source": "/book-online",        "destination": "/#setmore-booking", "permanent": true },
+    { "source": "/book",               "destination": "/#setmore-booking", "permanent": true },
+    { "source": "/bookings",           "destination": "/#setmore-booking", "permanent": true },
+    { "source": "/booking",            "destination": "/#setmore-booking", "permanent": true },
+    { "source": "/contact",            "destination": "/#contact",         "permanent": true },
+    { "source": "/contact-us",         "destination": "/#contact",         "permanent": true },
+    { "source": "/upcoming-events",    "destination": "/#events",          "permanent": true },
+    { "source": "/events",             "destination": "/#events",          "permanent": true },
+    { "source": "/events-1",           "destination": "/#events",          "permanent": true },
+    { "source": "/schedule",           "destination": "/#events",          "permanent": true },
+    { "source": "/stories-of-joy",     "destination": "/#about",           "permanent": true },
+    { "source": "/stories",            "destination": "/#about",           "permanent": true },
+    { "source": "/testimonials",       "destination": "/#about",           "permanent": true },
+    { "source": "/blog",               "destination": "/#about",           "permanent": true },
+    { "source": "/faq",                "destination": "/#contact",         "permanent": true },
+    { "source": "/about",              "destination": "/#about",           "permanent": true },
+    { "source": "/about-us",           "destination": "/#about",           "permanent": true },
+    { "source": "/home",               "destination": "/",                 "permanent": true }
+  ]
+}
